@@ -11,7 +11,6 @@ public class CardSelectionHandler : MonoBehaviour, IPointerEnterHandler, IPointe
     private Vector3 _startPos;
     private Vector3 _startScale;
 
-
     void Start()
     {
         this._startPos = transform.position;

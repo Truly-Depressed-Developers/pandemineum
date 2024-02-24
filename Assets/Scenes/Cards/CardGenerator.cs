@@ -14,13 +14,10 @@ public class CardPrefabGenerator : MonoBehaviour
     public void GenerateCardPrefab()
     {
         // Get the child and draw stats
-        Debug.Log(this.transform.childCount);
         for (int i = 0; i < this.transform.childCount; i++)
         {
             // Get the card
             var card = this.transform.GetChild(i);
-            Debug.Log(card);
-            Debug.Log(card.childCount);
             
             // Display each statistic
             for (int j = 0; j < card.childCount; j++)
@@ -58,11 +55,7 @@ public class CardPrefabGenerator : MonoBehaviour
                     card5.entityType.color = Color.red;
                     card5.chosenStatistic.color = Color.red;
                 }
-
-
-
             }
-
         }
     }
 }

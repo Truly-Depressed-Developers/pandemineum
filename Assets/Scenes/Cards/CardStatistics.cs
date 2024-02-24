@@ -4,16 +4,12 @@ using UnityEngine;
 [CreateAssetMenu]
 public class CardStatistics : ScriptableObject
 {
-    // All statistics
-
-
     // Chosen statistic
     public EntityType entityType;
     public PlayerStatistics playerStatistic;
     public EnemyStatistics enemyStatistic;
     public BuffType buffType;
     public int value;
-    private string color;
     //player Tresholds
     private int playerHealthThreshhold = 5;
     private int playerArmorThreshhold = 5;
@@ -54,7 +50,6 @@ public class CardStatistics : ScriptableObject
         this.buffType = UnityEngine.Random.value <= this.probability ? BuffType.Buff : BuffType.Debuff;
 
         // Value of the buff or debuff
-        //this.value = this.buffType == BuffType.Buff ? UnityEngine.Random.Range(1, this.threshhold) : UnityEngine.Random.Range(1, this.threshhold);
         if (this.entityType == EntityType.Player)
         {
             if (this.buffType == BuffType.Buff)
