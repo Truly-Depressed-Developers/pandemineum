@@ -12,6 +12,6 @@ public class card5 : MonoBehaviour
 
     void Start()
     {
-        Console.WriteLine("test");
+        Debug.Log("test");
     }
 }
