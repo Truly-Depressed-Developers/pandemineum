@@ -38,12 +38,12 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Shoot"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""656ccc30-2219-4efc-b2ea-3d1b1cca8858"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -104,7 +104,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""8f408f49-4638-45cc-91b6-763dd3c49866"",
+                    ""id"": ""4aed0cf9-b512-44e1-9276-9fb9b4e41562"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",

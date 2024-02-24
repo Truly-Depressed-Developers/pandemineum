@@ -13,21 +13,51 @@ namespace Player {
     [SerializeField] private float spread;
     [SerializeField] private int pellets;
     [SerializeField] private float range;
-
+    [SerializeField] private int clipSize;
+    
+    [SerializeField] private float shotCooldown;
     [SerializeField] private float reloadTime;
 
     [SerializeField] private LayerMask damageDealLayers;
 
+    private float lastShot;
     private float lastReload;
+    private int ammo;
 
     public float ReloadProgress {
       get {
         return Mathf.Clamp((Time.time - lastReload) / reloadTime, 0f, 1f);
       }
     }
+    
+    public float ShotCooldownProgress {
+      get {
+        return Mathf.Clamp((Time.time - lastShot) / shotCooldown, 0f, 1f);
+      }
+    }
+
+    public int CurrentAmmo {
+      get {
+        return ammo;
+      }
+    }
+
+    public bool IsReloading {
+      get {
+        return ReloadProgress > Mathf.Epsilon;
+      }
+    }
+    
+    public bool IsCoolingDown {
+      get {
+        return ShotCooldownProgress > Mathf.Epsilon;
+      }
+    }
 
     public void Start() {
       lastReload = -reloadTime;
+      lastShot = -shotCooldown;
+      ammo = clipSize;
     }
 
     public void Fire() {
@@ -49,11 +79,21 @@ namespace Player {
 
       // lr.SetPositions(pelletPoints);
 
-      lastReload = Time.time;
+      if (--ammo == 0) {
+        lastReload = Time.time;
+        StartCoroutine(DoReload());
+      }
+
+      lastShot = Time.time;
+    }
+
+    private IEnumerator DoReload() {
+      yield return new WaitForSeconds(reloadTime);
+      ammo = clipSize;
     }
 
     private bool CanShoot() {
-      return Mathf.Abs(ReloadProgress - 1f) < Mathf.Epsilon;
+      return ammo > 0 && Mathf.Abs(ReloadProgress - 1f) < Mathf.Epsilon && Mathf.Abs(ShotCooldownProgress - 1f) < Mathf.Epsilon;
     }
 
     private void SetLrProperties(GameObject lri, Vector3[] points) {
@@ -71,7 +111,7 @@ namespace Player {
       Gradient gradient = new();
       gradient.SetKeys(
         new GradientColorKey[] { new(Color.white, 0.0f), new(Color.grey, 1.0f) },
-        new GradientAlphaKey[] { new(1.0f, 0.0f), new(0.3f, 1.0f) }
+        new GradientAlphaKey[] { new(1.0f, 0f), new(0.3f, 1.0f) }
       );
       lr.colorGradient = gradient;
     }

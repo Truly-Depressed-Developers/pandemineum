@@ -134,8 +134,10 @@ MonoBehaviour:
   lineRendererInstance: {fileID: 9037198448714019720, guid: 05da37be4d21fa6449748352af1bad05, type: 3}
   spread: 15
   pellets: 4
-  range: 10
-  reloadTime: 0.8
+  range: 7
+  clipSize: 6
+  shotCooldown: 0.3
+  reloadTime: 1.2
   damageDealLayers:
     serializedVersion: 2
     m_Bits: 768
