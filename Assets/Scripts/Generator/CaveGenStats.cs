@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Cave Type" , menuName = "new Cave")]
-public class CaveGenStats : ScriptableObject
-{
+namespace Generator {
+  [CreateAssetMenu(fileName = "New Cave Type" , menuName = "new Cave")]
+  public class CaveGenStats : ScriptableObject
+  {
     [Header("Overall Size")]
     public int MinTunnels = 7;
     public int MaxTunnels = 13;
@@ -24,4 +25,5 @@ public class CaveGenStats : ScriptableObject
     [Space(5)]
     public int MinAverage = 0;
     public int MaxAverage = 100000;
+  }
 }
