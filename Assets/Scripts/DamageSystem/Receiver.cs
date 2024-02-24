@@ -21,6 +21,7 @@ namespace DamageSystem {
     }
     
     private void OnCollisionEnter2D(Collision2D other) {
+      Debug.Log("Collision");
       if (damageSources != (damageSources | 1 << other.gameObject.layer)) return;
       other.gameObject.TryGetComponent(out CollisionDamageDealer damageDealer);
       if (!damageDealer) return;
@@ -28,6 +29,9 @@ namespace DamageSystem {
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
+      Debug.Log("Trigger");
+      Debug.Log(other.gameObject.layer);
+      Debug.Log(other.gameObject.name);
       if (damageSources != (damageSources | 1 << other.gameObject.layer)) return;
       IDamageDealer damageDealer = other.gameObject.GetComponentInParent<IDamageDealer>();
       if (damageDealer == null) return;

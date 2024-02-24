@@ -175,7 +175,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &6915101906255297387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,9 +206,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smoothSpeed: 20
-  shellPrefab: {fileID: 0}
-  shellSpawnPoint: {fileID: 0}
-  reloadBar: {fileID: 0}
+  shellPrefab: {fileID: 5353107022044990615, guid: 3af821bc3c5862941b6f483fb649493f, type: 3}
+  shellSpawnPoint: {fileID: 2552796614736088849}
+  reloadBar: {fileID: 1731795386440079956}
 --- !u!1 &2613999411195964453
 GameObject:
   m_ObjectHideFlags: 0
