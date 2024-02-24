@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using DamageSystem;
@@ -14,11 +14,11 @@ namespace Player {
     [SerializeField] private int pellets;
     [SerializeField] private float range;
     [SerializeField] private int clipSize;
-    
+
     [SerializeField] private float shotCooldown;
     [SerializeField] private float reloadTime;
 
-    [SerializeField] private LayerMask damageDealLayers;
+    [SerializeField] private LayerMask hitColliderLayers;
 
     private float lastShot;
     private float lastReload;
@@ -29,7 +29,7 @@ namespace Player {
         return Mathf.Clamp((Time.time - lastReload) / reloadTime, 0f, 1f);
       }
     }
-    
+
     public float ShotCooldownProgress {
       get {
         return Mathf.Clamp((Time.time - lastShot) / shotCooldown, 0f, 1f);
@@ -47,7 +47,7 @@ namespace Player {
         return ReloadProgress > Mathf.Epsilon;
       }
     }
-    
+
     public bool IsCoolingDown {
       get {
         return ShotCooldownProgress > Mathf.Epsilon;
@@ -73,7 +73,11 @@ namespace Player {
         Vector3[] arr = { tip.position, pelletPoint };
         var lri = Instantiate(lineRendererInstance);
 
-        Raycast(tip.position, randomDir);
+        Raycast(tip.position, randomDir, out float newRange);
+
+        if(newRange < range) {
+          arr[1] = tip.position + randomDir * newRange;
+        }
         SetLrProperties(lri, arr);
       }
 
@@ -97,6 +101,7 @@ namespace Player {
     }
 
     private void SetLrProperties(GameObject lri, Vector3[] points) {
+      Debug.Log(points.Length);
       lri.TryGetComponent(out LineRendererFade lrf);
       lri.TryGetComponent(out LineRenderer lr);
 
@@ -116,12 +121,15 @@ namespace Player {
       lr.colorGradient = gradient;
     }
 
-    private void Raycast(Vector3 start, Vector3 dir) {
-      var hit = Physics2D.Raycast(start, dir, range, damageDealLayers);
+    private void Raycast(Vector3 start, Vector3 dir, out float newRange) {
+      newRange = range;
+
+      var hit = Physics2D.Raycast(start, dir, range, hitColliderLayers);
 
       if (!hit) return;
+      newRange = hit.distance;
       if (!hit.transform.TryGetComponent(out Receiver dmgRec)) return;
-      
+
       dmgRec.TakeDamage(20f);
     }
   }

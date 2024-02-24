@@ -138,7 +138,7 @@ MonoBehaviour:
   clipSize: 6
   shotCooldown: 0.3
   reloadTime: 1.2
-  damageDealLayers:
+  hitColliderLayers:
     serializedVersion: 2
     m_Bits: 768
 --- !u!120 &9196422923291117361
