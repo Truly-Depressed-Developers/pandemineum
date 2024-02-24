@@ -9,6 +9,9 @@ public class CardStatistics : ScriptableObject
     public BuffType buffType;
     public int value;
     private int threshhold = 5;
+    public string displayVal;
+    public string displayStat;
+
 
     void OnEnable()
     {
@@ -16,6 +19,9 @@ public class CardStatistics : ScriptableObject
         this.entityType = this.drawEntityType();
         this.buffType = this.drawBuffType();
         this.value = this.drawValue(this.buffType);
+        this.displayStat = this.statistics.ToString();
+        this.displayVal = this.value.ToString();
+
     }
 
     private EntityType drawEntityType()
