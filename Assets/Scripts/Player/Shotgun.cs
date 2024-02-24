@@ -14,6 +14,7 @@ namespace Player {
     [SerializeField] private int pellets;
     [SerializeField] private float range;
     [SerializeField] private int clipSize;
+    [SerializeField] private float damage = 20f;
 
     [SerializeField] private float shotCooldown;
     [SerializeField] private float reloadTime;
@@ -61,14 +62,9 @@ namespace Player {
       lastShot = -shotCooldown;
       ammo = clipSize;
 
-      GameObject.Find("Crosshair").TryGetComponent(out cursorManager);
+      GameObject crosshair = GameObject.Find("Crosshair");
 
-
-      if (cursorManager) {
-        Debug.Log("CursorManager found");
-      } else {
-        Debug.Log("CursorManager not found");
-      }
+      if (crosshair) crosshair.TryGetComponent(out cursorManager);
 
       if (cursorManager) cursorManager.setShellsCount(clipSize);
     }
@@ -148,7 +144,7 @@ namespace Player {
       newRange = hit.distance;
       if (!hit.transform.TryGetComponent(out Receiver dmgRec)) return;
 
-      dmgRec.TakeDamage(20f);
+      dmgRec.TakeDamage(damage);
     }
   }
 }

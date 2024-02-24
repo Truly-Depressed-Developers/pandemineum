@@ -4,6 +4,7 @@ using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using Utils;
 
 public class CursorManager : MonoBehaviour {
   [SerializeField] private float smoothSpeed = 5f;
@@ -28,15 +29,12 @@ public class CursorManager : MonoBehaviour {
   private void UpdateTargetPosition() {
     if (mainCamera == null) return;
 
-    Vector2 mousePosition = Mouse.current.position.ReadValue();
-    mousePosition.y = Screen.height - mousePosition.y;
-    Vector3 mouseScreenPosition = new Vector3(mousePosition.x, mousePosition.y, mainCamera.nearClipPlane);
-    targetPosition = mainCamera.ScreenToWorldPoint(mouseScreenPosition);
-    targetPosition.z = 0;
-    targetPosition.y = -targetPosition.y;
+    Vector2 mousePos = new Vector2(MouseLocation.I.Position.x, MouseLocation.I.Position.y);
+
+    targetPosition = mousePos;
   }
 
-  private void Update() {
+  private void FixedUpdate() {
     UpdateTargetPosition();
 
     transform.position = Vector3.Lerp(transform.position, targetPosition, smoothSpeed * Time.deltaTime);
@@ -94,12 +92,10 @@ public class CursorManager : MonoBehaviour {
 
   public void onReload() {
     currentShellsCount = shellsCount;
-    Debug.Log("Reloading");
     updateActiveShells();
   }
 
   public void startBarAnimation(float time) {
-    Debug.Log("Starting bar animation");
     StartCoroutine(AnimateBar(time));
   }
 
@@ -116,8 +112,6 @@ public class CursorManager : MonoBehaviour {
       reloadBar.value = animatedValue;
 
       elapsedTime += Time.deltaTime;
-
-      Debug.Log("Elapsed time: " + elapsedTime);
 
       yield return null;
     }
