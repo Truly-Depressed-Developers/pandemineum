@@ -4,11 +4,11 @@ using UnityEngine;
 public class Enemy : MonoBehaviour {
   private Transform player; 
   [SerializeField] private float detectionRange = 10f;
-  [SerializeField] private float movementSpeed = 5f;
+  [SerializeField] public float movementSpeed = 5f;
   [SerializeField] private float jumpForce = 50f;
   [SerializeField] private float jumpCooldown = 2f;
   [SerializeField] private float jumpFreezeTime = 1f;
-  [SerializeField] private float minJumpDistance = 2f;
+  [SerializeField] public float minJumpDistance = 2f;
 
   [SerializeField] private float movementDirectionOuterAngle = 30f;
   [SerializeField] private float movementDirectionInnerAngle = 30f;

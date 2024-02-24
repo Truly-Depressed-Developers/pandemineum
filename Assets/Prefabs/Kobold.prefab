@@ -103,7 +103,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38cd806b45584fda8f0eb9c2e6182bb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 100
+  baseMaxHp: 50
+  baseArmor: 0
   healthbar: {fileID: 4167078927452472729}
   damageSources:
     serializedVersion: 2

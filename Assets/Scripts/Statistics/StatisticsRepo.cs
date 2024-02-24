@@ -12,8 +12,8 @@ public class StatisticsRepo : MonoSingleton<StatisticsRepo> {
   public float playerSpeedMul { get; set; } = 1; // moved
   public int playerReloadSpeedMul { get; set; } = 1;
   public int playerShotRangeMul { get; set; } = 1;
-  public int playerSightRangeMul { get; set; } = 1;
-  public int playerLuckMul { get; set; } = 1;
+  public int playerSightRangeMul { get; set; } = 1; //nie mamy
+  public int playerLuckMul { get; set; } = 1; //nie mamy
   public int playerCobaltPickRateMul { get; set; } = 1;
 
   //Enemies 
@@ -21,6 +21,6 @@ public class StatisticsRepo : MonoSingleton<StatisticsRepo> {
   public int enemyArmorAdd { get; set; } = 0;
   public int enemyDamageAdd { get; set; } = 0;
   public int enemySpeedMul { get; set; } = 1;
-  public int enemyDropRateMul { get; set; } = 1;
+  public int enemyDropRateMul { get; set; } = 1; //nie mamy
   public int enemyAttackRangeMul { get; set; } = 1;
 }
