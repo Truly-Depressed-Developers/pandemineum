@@ -33,11 +33,5 @@ namespace Generator {
     public int min_enemy_per_troop = 3;
     public int max_enemy_per_troop = 8;
     public float troop_boundry_box_size = 9f;
-
-    [Space(10)]
-    [Header("Other Stats")]
-    [Space(5)]
-    public float min_kobalt_percentage = 0.12f;
-    public float max_kobalt_percentage = 0.18f;
   }
 }

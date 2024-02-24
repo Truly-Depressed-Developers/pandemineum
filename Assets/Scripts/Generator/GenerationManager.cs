@@ -40,6 +40,7 @@ namespace Generator {
         yield return null;
 
       // filling it with content...
+      cave_content.calculate_kobalt_richness(100, 2128);
       cave_content.BeginGeneration();
       while (!cave_content.done_generating)
         yield return null;
