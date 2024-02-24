@@ -13,13 +13,16 @@ namespace Player {
     [SerializeField] private float spread;
     [SerializeField] private int pellets;
     [SerializeField] public float range;
-    [SerializeField] public float damage;
+    [SerializeField] public float damage = 20f;
     [SerializeField] private int clipSize;
 
     [SerializeField] private float shotCooldown;
     [SerializeField] public float reloadTime;
 
     [SerializeField] private LayerMask hitColliderLayers;
+
+    private CursorManager cursorManager;
+    private PlayerCameraEffects playerCamEff;
 
     private float lastShot;
     private float lastReload;
@@ -59,6 +62,20 @@ namespace Player {
       lastReload = -reloadTime;
       lastShot = -shotCooldown;
       ammo = clipSize;
+
+      GetScriptReferences();
+
+      if (!cursorManager) {
+        Debug.LogWarning("CursorManager not found");
+      }
+
+      GameObject crosshair = GameObject.Find("Crosshair");
+      
+      if (crosshair) crosshair.TryGetComponent(out cursorManager);
+      if (cursorManager) cursorManager.setShellsCount(clipSize);
+
+      if (!playerCamEff)
+        Debug.LogWarning("Player Camera Effects component was not found...");
     }
 
     public void Fire() {
@@ -76,29 +93,39 @@ namespace Player {
 
         Raycast(tip.position, randomDir, out float newRange);
 
-        if(newRange < range) {
+        if (newRange < range) {
           arr[1] = tip.position + randomDir * newRange;
         }
+
         SetLrProperties(lri, arr);
       }
 
       // lr.SetPositions(pelletPoints);
+      if (cursorManager) cursorManager.onShoot(--ammo);
 
-      if (--ammo == 0) {
+      // apply slight screenshake
+      if (playerCamEff) playerCamEff.ShakeCamera();
+
+      if (ammo == 0) {
         lastReload = Time.time;
         StartCoroutine(DoReload());
+      } else {
+        if (cursorManager) cursorManager.startBarAnimation(shotCooldown);
       }
 
       lastShot = Time.time;
     }
 
     private IEnumerator DoReload() {
+      if (cursorManager) cursorManager.startBarAnimation(reloadTime);
       yield return new WaitForSeconds(reloadTime);
       ammo = clipSize;
+      if (cursorManager) cursorManager.onReload();
     }
 
     private bool CanShoot() {
-      return ammo > 0 && Mathf.Abs(ReloadProgress - 1f) < Mathf.Epsilon && Mathf.Abs(ShotCooldownProgress - 1f) < Mathf.Epsilon;
+      return ammo > 0 && Mathf.Abs(ReloadProgress - 1f) < Mathf.Epsilon &&
+             Mathf.Abs(ShotCooldownProgress - 1f) < Mathf.Epsilon;
     }
 
     private void SetLrProperties(GameObject lri, Vector3[] points) {
@@ -131,6 +158,14 @@ namespace Player {
       if (!hit.transform.TryGetComponent(out Receiver dmgRec)) return;
 
       dmgRec.TakeDamage(damage);
+    }
+
+    private void GetScriptReferences() {
+      GameObject find;
+      find = GameObject.Find("Crosshair");
+      if (find) find.TryGetComponent(out cursorManager); // UI ammo display
+      find = GameObject.Find("Player Camera Follow");
+      if (find) find.TryGetComponent(out playerCamEff); // Player camera effects
     }
   }
 }
