@@ -138,7 +138,7 @@ MonoBehaviour:
   reloadTime: 0.8
   damageDealLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 768
 --- !u!120 &9196422923291117361
 LineRenderer:
   serializedVersion: 2
