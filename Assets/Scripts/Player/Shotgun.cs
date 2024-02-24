@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DamageSystem;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -14,6 +15,8 @@ namespace Player {
     [SerializeField] private float range;
 
     [SerializeField] private float reloadTime;
+
+    [SerializeField] private LayerMask damageDealLayers;
 
     private float lastReload;
 
@@ -29,8 +32,8 @@ namespace Player {
 
     public void Fire() {
       Debug.Log(ReloadProgress);
-      
-      if(!CanShoot()) return;
+
+      if (!CanShoot()) return;
 
       Vector3 shotgunDir = transform.right;
 
@@ -40,34 +43,48 @@ namespace Player {
         var pelletPoint = tip.position + randomDir * range;
 
         Vector3[] arr = { tip.position, pelletPoint };
-
         var lri = Instantiate(lineRendererInstance);
-        lri.TryGetComponent(out LineRendererFade lrf);
-        lri.TryGetComponent(out LineRenderer lr);
-        
-        if(!lrf || !lr) continue;
 
-        lrf.points = arr;
-        lrf.fadeOutTime = 0.5f;
-
-        lr.startWidth = 0.05f;
-        lr.endWidth = 0.05f;
-        
-        Gradient gradient = new ();
-        gradient.SetKeys(
-          new GradientColorKey[] { new (Color.white, 0.0f), new (Color.grey, 1.0f) },
-          new GradientAlphaKey[] { new (1.0f, 0.0f), new (0.3f, 1.0f) }
-        );
-        lr.colorGradient = gradient;
+        Raycast(tip.position, randomDir);
+        SetLrProperties(lri, arr);
       }
-      
+
       // lr.SetPositions(pelletPoints);
-      
+
       lastReload = Time.time;
     }
 
     private bool CanShoot() {
       return Mathf.Abs(ReloadProgress - 1f) < Mathf.Epsilon;
+    }
+
+    private void SetLrProperties(GameObject lri, Vector3[] points) {
+      lri.TryGetComponent(out LineRendererFade lrf);
+      lri.TryGetComponent(out LineRenderer lr);
+
+      if (!lrf || !lr) return;
+
+      lrf.points = points;
+      lrf.fadeOutTime = 0.5f;
+
+      lr.startWidth = 0.05f;
+      lr.endWidth = 0.05f;
+
+      Gradient gradient = new();
+      gradient.SetKeys(
+        new GradientColorKey[] { new(Color.white, 0.0f), new(Color.grey, 1.0f) },
+        new GradientAlphaKey[] { new(1.0f, 0.0f), new(0.3f, 1.0f) }
+      );
+      lr.colorGradient = gradient;
+    }
+
+    private void Raycast(Vector3 start, Vector3 dir) {
+      var hit = Physics2D.Raycast(start, dir, range, damageDealLayers);
+
+      if (!hit) return;
+      if (!hit.transform.TryGetComponent(out Receiver dmgRec)) return;
+      
+      dmgRec.TakeDamage(20f);
     }
   }
 }
