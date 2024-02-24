@@ -7,5 +7,6 @@
     ReloadSpeed,
     ShotRange,
     SightRange,
-    Luck
+    Luck,
+    CobaltPickRate
 }

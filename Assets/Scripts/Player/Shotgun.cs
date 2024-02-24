@@ -12,11 +12,12 @@ namespace Player {
 
     [SerializeField] private float spread;
     [SerializeField] private int pellets;
-    [SerializeField] private float range;
+    [SerializeField] public float range;
+    [SerializeField] public float damage;
     [SerializeField] private int clipSize;
 
     [SerializeField] private float shotCooldown;
-    [SerializeField] private float reloadTime;
+    [SerializeField] public float reloadTime;
 
     [SerializeField] private LayerMask hitColliderLayers;
 
@@ -129,7 +130,7 @@ namespace Player {
       newRange = hit.distance;
       if (!hit.transform.TryGetComponent(out Receiver dmgRec)) return;
 
-      dmgRec.TakeDamage(20f);
+      dmgRec.TakeDamage(damage);
     }
   }
 }

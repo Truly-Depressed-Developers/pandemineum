@@ -11,7 +11,7 @@ namespace Mine {
     public UnityEvent onThresholdCrossed;
 
     private void Start() {
-      CobaltBag.I.CobaltCountChanged.AddListener((newCount) => {
+      CobaltBag.I.cobaltCountChanged.AddListener((newCount) => {
         UpdateCounterText(newCount);
         
         if(newCount >= cobaltRequirement) onThresholdCrossed.Invoke();

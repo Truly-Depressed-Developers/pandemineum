@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = StatisticsRepo.Instance.playerSpeed;
+    [SerializeField] public float moveSpeed;
 
     private Vector2 direction = new(0, 0);
 
