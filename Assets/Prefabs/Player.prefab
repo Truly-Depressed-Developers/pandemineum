@@ -113,6 +113,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectionRadius: 0.4
+  OnCobaltCollected:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 203876232149729915}
+        m_TargetAssemblyTypeName: Player.CobaltBag, Assembly-CSharp
+        m_MethodName: OnCobaltCollected
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8883291493749248019
 GameObject:
   m_ObjectHideFlags: 0
@@ -129,6 +144,7 @@ GameObject:
   - component: {fileID: 5367819950785274171}
   - component: {fileID: 241622596830715343}
   - component: {fileID: 737642453858378910}
+  - component: {fileID: 203876232149729915}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -334,6 +350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotgun: {fileID: 5241163087944088093}
+  isShooting: 0
 --- !u!114 &737642453858378910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,6 +364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 0
+  healthbar: {fileID: 0}
   damageSources:
     serializedVersion: 2
     m_Bits: 1280
@@ -356,6 +374,18 @@ MonoBehaviour:
   onDamageReceived:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &203876232149729915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8883291493749248019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27bfa18e4743ef44c8f9019905b7cfea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6319849938673289657
 PrefabInstance:
   m_ObjectHideFlags: 0
