@@ -20,6 +20,8 @@ namespace Player {
 
     [SerializeField] private LayerMask hitColliderLayers;
 
+    private CursorManager cursorManager;
+
     private float lastShot;
     private float lastReload;
     private int ammo;
@@ -58,6 +60,17 @@ namespace Player {
       lastReload = -reloadTime;
       lastShot = -shotCooldown;
       ammo = clipSize;
+
+      GameObject.Find("Crosshair").TryGetComponent(out cursorManager);
+
+
+      if (cursorManager) {
+        Debug.Log("CursorManager found");
+      } else {
+        Debug.Log("CursorManager not found");
+      }
+
+      if (cursorManager) cursorManager.setShellsCount(clipSize);
     }
 
     public void Fire() {
@@ -79,21 +92,27 @@ namespace Player {
           arr[1] = tip.position + randomDir * newRange;
         }
         SetLrProperties(lri, arr);
+
       }
 
       // lr.SetPositions(pelletPoints);
+      if (cursorManager) cursorManager.onShoot(--ammo);
 
-      if (--ammo == 0) {
+      if (ammo == 0) {
         lastReload = Time.time;
         StartCoroutine(DoReload());
+      } else {
+        if (cursorManager) cursorManager.startBarAnimation(shotCooldown);
       }
 
       lastShot = Time.time;
     }
 
     private IEnumerator DoReload() {
+      if (cursorManager) cursorManager.startBarAnimation(reloadTime);
       yield return new WaitForSeconds(reloadTime);
       ammo = clipSize;
+      if (cursorManager) cursorManager.onReload();
     }
 
     private bool CanShoot() {
