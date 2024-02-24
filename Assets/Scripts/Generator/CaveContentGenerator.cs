@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Generator {
   public class CaveContentGenerator : MonoBehaviour {
     [HideInInspector] public bool done_generating = false;
-    public CaveGenStats cave_gen;
+    [HideInInspector] public CaveGenStats cave_profile;
     public GeneratorTools gen_tools;
     public System.Random gen;
 
@@ -14,6 +14,7 @@ namespace Generator {
     public GameObject kobalt_pref;
 
     private List<Vector2Int> spawn_tiles;
+    private List<GameObject> spawned_kobalt = new List<GameObject>(0);
 
     public void BeginGeneration() {
       done_generating = false;
@@ -21,11 +22,13 @@ namespace Generator {
       if (gen == null)
         gen = new System.Random();
       create_kobalt_veins();
+      filter_correct_kobalt();
       done_generating = true;
     }
 
     private void create_kobalt_veins() {
-      int amount = Mathf.CeilToInt(spawn_tiles.Count * gen.Next(18, 24)/100f);
+      int amount = Mathf.CeilToInt(spawn_tiles.Count * gen.Next(
+        (int)(cave_profile.min_kobalt_percentage*100), (int)(cave_profile.max_kobalt_percentage*100))/100f);
       List<Vector2Int> pos = new List<Vector2Int>(spawn_tiles); int id;
       int sp_tiles = pos.Count;
       while(amount != 0) {
@@ -47,7 +50,7 @@ namespace Generator {
             * Mathf.Pow(gen.Next(0, 100) / 100f,2) * vein_radious);
           err--;
         }
-        while (!collision_check(new_pos , spawned, collision_dist, last_id) && err != 0);
+        while (!gen_tools.collision_check(new_pos , spawned, collision_dist, last_id) && err != 0);
         vein_amount--;
         if (err == 0)
           continue;
@@ -57,25 +60,19 @@ namespace Generator {
       }
     }
 
-    private bool collision_check(Vector2 pos , Vector2[] other_pos, float collision_dist, int array_size = -1) {
-      if (gen_tools.check_position_valid(pos)) // out of map boundries
-        return true;
-
-      if (array_size == -1)
-        array_size = other_pos.Length;
-
-      for(int i = 0; i < array_size; i++) { // colliding
-        if (other_pos[i] == null)
-          return true;
-        if (Vector2.Distance(pos, other_pos[i]) <= collision_dist)
-          return false;
+    private void filter_correct_kobalt() {
+      for(int i = spawned_kobalt.Count - 1; i >= 0; i--) {
+        if (!gen_tools.check_position_valid(spawned_kobalt[i].transform.position)) {
+          Destroy(spawned_kobalt[i]);
+          spawned_kobalt.RemoveAt(i);
+        }
       }
-      return true;
     }
 
     private void create_kobalt(Vector2 pos) {
       GameObject a = Instantiate(kobalt_pref, transform);
-      a.transform.position = pos;
+      a.transform.position = pos + Vector2.one * 0.5f;
+      spawned_kobalt.Add(a);
       Cobalt.Ore ore = a.GetComponent<Cobalt.Ore>();
       ore.SetRichness(gen.Next(18,26));
     }

@@ -6,7 +6,7 @@ namespace Generator {
   public class MapGenerator : MonoBehaviour {
     [HideInInspector] public bool done_generating = false;
     public GeneratorTools gen_tools;
-    public CaveGenStats cave_profile;
+    [HideInInspector] public CaveGenStats cave_profile;
 
     private Coroutine current_gen;
     public System.Random gen;

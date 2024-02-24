@@ -234,6 +234,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 126622279818775995, guid: cbe004bfac6282845a508cedad8f806f, type: 3}
+      propertyPath: cave_profile
+      value: 
+      objectReference: {fileID: 11400000, guid: 36d330a1bcf4c754e8c0e81954b957a2, type: 2}
     - target: {fileID: 3197306898866631299, guid: cbe004bfac6282845a508cedad8f806f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -134,7 +134,33 @@ namespace Generator {
     }
 
     public bool check_position_valid(Vector2 pos) {
-      return GroundTilemap.HasTile(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y)));
+      if (!GroundTilemap.HasTile(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y),0)))
+        return false;
+      if (!GroundTilemap.HasTile(new Vector3Int(Mathf.RoundToInt(pos.x + 0.5f), Mathf.RoundToInt(pos.y),0)))
+        return false;
+      if (!GroundTilemap.HasTile(new Vector3Int(Mathf.RoundToInt(pos.x - 0.5f), Mathf.RoundToInt(pos.y),0)))
+        return false;
+      if (!GroundTilemap.HasTile(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y + 0.5f),0)))
+        return false;
+      if (!GroundTilemap.HasTile(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y - 0.5f),0)))
+        return false;
+      return true;
+    }
+
+    public bool collision_check(Vector2 pos, Vector2[] other_pos, float collision_dist, int array_size = -1) {
+      if (!check_position_valid(pos))
+        return true;
+
+      if (array_size == -1)
+        array_size = other_pos.Length;
+
+      for (int i = 0; i < array_size; i++) { // colliding
+        if (other_pos[i] == null)
+          return true;
+        if (Vector2.Distance(pos, other_pos[i]) <= collision_dist)
+          return false;
+      }
+      return true;
     }
 
     public System.Random make_gen(string new_seed) {
