@@ -15,7 +15,7 @@ namespace Utils {
       }
     }
 
-    private void Update() {
+    private void FixedUpdate() {
       Position = camera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
     }
   }
