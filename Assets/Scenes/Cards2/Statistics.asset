@@ -9,10 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1512711833488f14da1273f81083d490, type: 3}
-  m_Name: Card
+  m_Script: {fileID: 11500000, guid: 3bf11f7a3d386924aa15d16c2fbd90b0, type: 3}
+  m_Name: Statistics
   m_EditorClassIdentifier: 
   statistics: 0
   entityType: 0
   buffType: 0
   value: 0
+  displayVal: 
+  displayStat: 

@@ -15,13 +15,11 @@ public class CardStatistics : ScriptableObject
 
     void OnEnable()
     {
-        Console.WriteLine("Drawing a card");
         this.entityType = this.drawEntityType();
         this.buffType = this.drawBuffType();
         this.value = this.drawValue(this.buffType);
         this.displayStat = this.statistics.ToString();
         this.displayVal = this.value.ToString();
-
     }
 
     private EntityType drawEntityType()
@@ -36,11 +34,6 @@ public class CardStatistics : ScriptableObject
 
     private int drawValue(BuffType type)
     {
-        if (type == BuffType.Buff) {
-            return UnityEngine.Random.Range(0, this.threshhold);
-        } else
-        {
-            return UnityEngine.Random.Range(0, this.threshhold);
-        }
+        return type == BuffType.Buff ? UnityEngine.Random.Range(0, this.threshhold): UnityEngine.Random.Range(0, this.threshhold);
     }
 }

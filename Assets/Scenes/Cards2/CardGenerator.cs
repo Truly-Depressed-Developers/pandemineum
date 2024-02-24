@@ -7,11 +7,10 @@ using System;
 
 public class CardPrefabGenerator : MonoBehaviour
 {
-    public GameObject cardPrefab; // Reference to the prefab you want to generate
+    public GameObject cardPrefab;
     public CardStatistics cardStatistics;
     void Start()
     {
-        Console.WriteLine("test");
         this.GenerateCardPrefab(this.cardStatistics);
     }
     public void GenerateCardPrefab(CardStatistics cardData)
@@ -20,17 +19,13 @@ public class CardPrefabGenerator : MonoBehaviour
         GameObject newCard = Instantiate(cardPrefab, transform.position, Quaternion.identity);
 
         // Get the Text components from the prefab
-        TMP_Text statistic = newCard.GetComponentInChildren<TMP_Text>(); // Assuming the Text component is a child of the prefab
-        TMP_Text value = newCard.GetComponentInChildren<TMP_Text>(); // Assuming the Text component is a child of the prefab
+        TMP_Text statistic = newCard.transform.GetChild(0).GetComponent<TMP_Text>();
+        TMP_Text value = newCard.transform.GetChild(1).GetComponent<TMP_Text>();
 
         // Display data from the CardData asset
         statistic.text = cardData.displayStat;
         value.text = cardData.displayVal;
 
-        // Optionally, you can set the parent of the instantiated card
         newCard.transform.SetParent(transform);
     }
-
-
-
 }
