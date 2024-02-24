@@ -66,12 +66,6 @@ namespace Player {
 
       if (crosshair) crosshair.TryGetComponent(out cursorManager);
 
-      if (cursorManager) {
-        Debug.Log("CursorManager found");
-      } else {
-        Debug.Log("CursorManager not found");
-      }
-
       if (cursorManager) cursorManager.setShellsCount(clipSize);
     }
 
