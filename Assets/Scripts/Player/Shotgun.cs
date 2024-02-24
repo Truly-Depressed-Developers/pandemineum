@@ -21,6 +21,7 @@ namespace Player {
     [SerializeField] private LayerMask hitColliderLayers;
 
     private CursorManager cursorManager;
+    private PlayerCameraEffects playerCamEff;
 
     private float lastShot;
     private float lastReload;
@@ -61,14 +62,16 @@ namespace Player {
       lastShot = -shotCooldown;
       ammo = clipSize;
 
-      GameObject.Find("Crosshair").TryGetComponent(out cursorManager);
-
+      GetScriptReferences();
 
       if (cursorManager) {
         Debug.Log("CursorManager found");
       } else {
         Debug.Log("CursorManager not found");
       }
+
+      if (!playerCamEff)
+        Debug.Log("Player Camera Effects component was not found...");
 
       if (cursorManager) cursorManager.setShellsCount(clipSize);
     }
@@ -97,6 +100,9 @@ namespace Player {
 
       // lr.SetPositions(pelletPoints);
       if (cursorManager) cursorManager.onShoot(--ammo);
+
+      // apply slight screenshake
+      if (playerCamEff) playerCamEff.ShakeCamera();
 
       if (ammo == 0) {
         lastReload = Time.time;
@@ -149,6 +155,14 @@ namespace Player {
       if (!hit.transform.TryGetComponent(out Receiver dmgRec)) return;
 
       dmgRec.TakeDamage(20f);
+    }
+
+    private void GetScriptReferences() {
+      GameObject find;
+      find = GameObject.Find("Crosshair");
+      if (find) find.TryGetComponent(out cursorManager); // UI ammo display
+      find = GameObject.Find("Player Camera Follow");
+      if (find) find.TryGetComponent(out playerCamEff); // Player camera effects
     }
   }
 }
