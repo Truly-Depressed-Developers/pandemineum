@@ -14,6 +14,7 @@ namespace Player {
     [SerializeField] private int pellets;
     [SerializeField] private float range;
     [SerializeField] private int clipSize;
+    [SerializeField] private float damage = 20f;
 
     [SerializeField] private float shotCooldown;
     [SerializeField] private float reloadTime;
@@ -64,16 +65,17 @@ namespace Player {
 
       GetScriptReferences();
 
-      if (cursorManager) {
-        Debug.Log("CursorManager found");
-      } else {
-        Debug.Log("CursorManager not found");
+      if (!cursorManager) {
+        Debug.LogWarning("CursorManager not found");
       }
 
-      if (!playerCamEff)
-        Debug.Log("Player Camera Effects component was not found...");
-
+      GameObject crosshair = GameObject.Find("Crosshair");
+      
+      if (crosshair) crosshair.TryGetComponent(out cursorManager);
       if (cursorManager) cursorManager.setShellsCount(clipSize);
+
+      if (!playerCamEff)
+        Debug.LogWarning("Player Camera Effects component was not found...");
     }
 
     public void Fire() {
@@ -91,11 +93,11 @@ namespace Player {
 
         Raycast(tip.position, randomDir, out float newRange);
 
-        if(newRange < range) {
+        if (newRange < range) {
           arr[1] = tip.position + randomDir * newRange;
         }
-        SetLrProperties(lri, arr);
 
+        SetLrProperties(lri, arr);
       }
 
       // lr.SetPositions(pelletPoints);
@@ -122,7 +124,8 @@ namespace Player {
     }
 
     private bool CanShoot() {
-      return ammo > 0 && Mathf.Abs(ReloadProgress - 1f) < Mathf.Epsilon && Mathf.Abs(ShotCooldownProgress - 1f) < Mathf.Epsilon;
+      return ammo > 0 && Mathf.Abs(ReloadProgress - 1f) < Mathf.Epsilon &&
+             Mathf.Abs(ShotCooldownProgress - 1f) < Mathf.Epsilon;
     }
 
     private void SetLrProperties(GameObject lri, Vector3[] points) {
@@ -154,7 +157,7 @@ namespace Player {
       newRange = hit.distance;
       if (!hit.transform.TryGetComponent(out Receiver dmgRec)) return;
 
-      dmgRec.TakeDamage(20f);
+      dmgRec.TakeDamage(damage);
     }
 
     private void GetScriptReferences() {
