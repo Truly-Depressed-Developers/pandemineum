@@ -7,6 +7,8 @@ using System;
 
 public class card5 : MonoBehaviour
 {
-    public TMP_Text displayStat;
-    public TMP_Text displayVal;
+    // Linkers to properties
+    public TMP_Text entityType;
+    public TMP_Text chosenStatistic;
+    public TMP_Text value;
 }
