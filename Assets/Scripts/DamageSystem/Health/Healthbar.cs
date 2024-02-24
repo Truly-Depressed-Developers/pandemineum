@@ -10,9 +10,16 @@ namespace DamageSystem.Health {
     public void SetHealth(float health) {
       slider.value = health;
 
-      bool isHidden = Mathf.Abs(slider.value - slider.maxValue) < Mathf.Epsilon;
-      fill.enabled = !isHidden;
-      border.enabled = !isHidden;
+      bool isPlayer = transform.parent.parent.CompareTag("Player");
+
+      if (isPlayer) {
+        fill.enabled = true;
+        border.enabled = true;
+      } else {
+        bool isHidden = Mathf.Abs(slider.value - slider.maxValue) < Mathf.Epsilon;
+        fill.enabled = !isHidden;
+        border.enabled = !isHidden;
+      }
     }
 
     public void SetMaxHealth(float health) {

@@ -101,7 +101,6 @@ namespace Player {
     }
 
     private void SetLrProperties(GameObject lri, Vector3[] points) {
-      Debug.Log(points.Length);
       lri.TryGetComponent(out LineRendererFade lrf);
       lri.TryGetComponent(out LineRenderer lr);
 
