@@ -10,7 +10,7 @@ public class CardStatistics : ScriptableObject
     public int value;
     private int threshhold = 5;
 
-    CardStatistics()
+    void OnEnable()
     {
         Console.WriteLine("Drawing a card");
         this.entityType = this.drawEntityType();
