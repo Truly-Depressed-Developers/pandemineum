@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,9 +25,12 @@ public class CardPrefabGenerator : MonoBehaviour
                 // Draw statistics for it
                 var cardStatisticsScriptableObjects = ScriptableObject.CreateInstance<CardStatistics>();
                 var displayStatistics = card.transform.GetChild(j);
+        var displayScript = displayStatistics.parent.GetComponent<CardSelectionHandler>();
+        displayScript.statistics = cardStatisticsScriptableObjects;
                 var buff = cardStatisticsScriptableObjects.buffType;
                 // Fetch the script with text fields to set their values
                 card5 card5 = displayStatistics.GetComponent<card5>();
+                
 
                 // Fill out text fields' values
                 string sign = "";
