@@ -1,16 +1,23 @@
-﻿using UnityEngine;
+﻿using System;
+using DamageSystem.Health;
+using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace DamageSystem {
   public class Receiver: MonoBehaviour {
     [SerializeField] private float maxHp;
+    [FormerlySerializedAs("hb")] [SerializeField] private Healthbar healthbar;
     [SerializeField] private LayerMask damageSources;
     [SerializeField] private UnityEvent onDeath;
     [SerializeField] private UnityEvent<float> onDamageReceived;
+    
     private float currentHp;
     
     private void Start() {
       currentHp = maxHp;
+      
+      if (healthbar) healthbar.SetMaxHealth(maxHp);
     }
     
     private void OnCollisionEnter2D(Collision2D other) {
@@ -32,6 +39,9 @@ namespace DamageSystem {
 
       currentHp -= amount;
       currentHp = Mathf.Clamp(currentHp, 0, maxHp);
+      
+      if(healthbar) healthbar.SetHealth(currentHp);
+      
       if (currentHp == 0) {
         Die();
       }
