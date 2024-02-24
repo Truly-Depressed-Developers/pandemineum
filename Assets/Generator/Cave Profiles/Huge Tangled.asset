@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c595591c28f03cb4a9d1d0f7fe6e4f62, type: 3}
+  m_Name: Huge Tangled
+  m_EditorClassIdentifier: 
+  MinTunnels: 7
+  MaxTunnels: 13
+  Caverns: 6
+  MinSnakeLength: 10
+  MaxSnakeLength: 20
+  MinCavernSize: 6
+  MaxCavernSize: 9
+  MinAverage: 60
+  MaxAverage: 100000
