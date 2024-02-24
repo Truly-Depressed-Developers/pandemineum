@@ -1,54 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utils;
 
-public class StatisticsRepo : MonoBehaviour
-{
+public class StatisticsRepo : MonoSingleton<MouseLocation> {
 
-  private int playerHealth { get; set; }
-  private int playerArmor { get; set; }
-  private int playerDamage { get; set; }
-  private int playerSpeed { get; set; }
-  private int playerReloadSpeed { get; set; }
-  private int playerShotRange { get; set; }
-  private int playerSightRange { get; set; }
-  private int playerLuck { get; set; }
+  public int playerHealth { get; set; } = 150;
+  public int playerHealthMax { get; set; } = 200;
+  public int playerArmor { get; set; } = 30;
+  public int playerDamage { get; set; } = 50;
+  public float playerSpeed { get; set; } = 2f; // moved
+  public int playerReloadSpeed { get; set; } = 2000;
+  public int playerShotRange { get; set; } = 200;
+  public int playerSightRange { get; set; } = 300;
+  public int playerLuck { get; set; } = 1;
+
   //Enemies 
-  private int enemyHealth { get; set; }
-  private int enemyArmor { get; set; }
-  private int enemyDamage { get; set; }
-  private int enemySpeed { get; set; }
-  private int enemyDropRate { get; set; }
-  private int enemyShotRange { get; set; }
+  public int enemyHealth { get; set; } = 150;
+  public int enemyArmor { get; set; } = 20;
+  public int enemyDamage { get; set; } = 30;
+  public int enemySpeed { get; set; } = 40;
+  public int enemyDropRate { get; set; } = 20;
+  public int enemyShotRange { get; set; } = 150;
 
-
+  // Singleton stuff
   private static StatisticsRepo instance;
-
   public static StatisticsRepo Instance { get { return instance; } }
-  private void constr() 
-  {
-    this.playerHealth = 200;
-    this.playerArmor = 30;
-    this.playerDamage = 50;
-    this.playerSpeed = 50;
-    this.playerReloadSpeed = 2000;
-    this.playerShotRange = 200;
-    this.playerSightRange = 300;
-    this.playerLuck = 1;
-    this.enemyHealth = 150;
-    this.enemyArmor = 20;
-    this.enemyDamage = 30;
-    this.enemySpeed = 40;
-    this.enemyShotRange = 150;
-    this.enemyDropRate = 20;
-  }
-
-  private void Awake() {
-    if (instance != null && instance != this) {
-      Destroy(this.gameObject);
-    } else {
-      constr();
-      instance = this;
-    }
-  }
 }

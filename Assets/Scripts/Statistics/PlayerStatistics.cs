@@ -1,4 +1,4 @@
-public enum PlayerStatistics
+﻿public enum PlayerStatistics
 {
     Health,
     Armor,
