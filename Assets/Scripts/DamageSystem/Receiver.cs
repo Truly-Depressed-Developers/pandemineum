@@ -2,7 +2,7 @@
 using UnityEngine.Events;
 
 namespace DamageSystem {
-  public class Receiver {
+  public class Receiver: MonoBehaviour {
     [SerializeField] private float maxHp;
     [SerializeField] private LayerMask damageSources;
     [SerializeField] private UnityEvent onDeath;
@@ -40,6 +40,7 @@ namespace DamageSystem {
       
       void Die() {
         onDeath.Invoke();
+        Destroy(gameObject);
       }
     }
   }
