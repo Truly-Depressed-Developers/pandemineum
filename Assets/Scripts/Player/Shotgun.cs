@@ -31,8 +31,6 @@ namespace Player {
     }
 
     public void Fire() {
-      Debug.Log(ReloadProgress);
-
       if (!CanShoot()) return;
 
       Vector3 shotgunDir = transform.right;
