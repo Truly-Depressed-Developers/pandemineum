@@ -1,4 +1,5 @@
 using System;
+using UnityEditor;
 using UnityEngine;
 
 [CreateAssetMenu]
@@ -18,10 +19,15 @@ public class CardStatistics : ScriptableObject
         this.entityType = this.drawEntityType();
         this.buffType = this.drawBuffType();
         this.value = this.drawValue(this.buffType);
-        this.displayStat = this.statistics.ToString();
+
+        this.displayStat = this.drawStatistic().ToString();
         this.displayVal = this.value.ToString();
     }
-
+    private Statistics drawStatistic()
+    {
+        Statistics[] allValues = (Statistics[])Enum.GetValues(typeof(Statistics));
+        return allValues[UnityEngine.Random.Range(0, allValues.Length)];
+    }
     private EntityType drawEntityType()
     {
         return UnityEngine.Random.value <= 0.5f ? EntityType.Player : EntityType.Enemy;

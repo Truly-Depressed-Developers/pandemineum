@@ -9,9 +9,4 @@ public class card5 : MonoBehaviour
 {
     public TMP_Text displayStat;
     public TMP_Text displayVal;
-
-    void Start()
-    {
-        Debug.Log("test");
-    }
 }
