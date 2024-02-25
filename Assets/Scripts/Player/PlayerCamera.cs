@@ -18,6 +18,8 @@ namespace Player {
     }
 
     private void CalculateCameraWishPosition() {
+      if(!player || !player_camera) return;
+
       mouse_pos = Mouse.current.position.ReadValue();
       world_m_pos = player_camera.ScreenToWorldPoint(mouse_pos);
       outlook_dir = world_m_pos - (Vector2)player.position;
