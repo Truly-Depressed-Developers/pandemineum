@@ -9,6 +9,7 @@
         case (PlayerStatistics.ReloadSpeed, BuffType.Buff): return "You become more familiar with your weapon";
         case (PlayerStatistics.ShotRange, BuffType.Buff): return "Extra gunpowder makes your pellets go further";
         case (PlayerStatistics.SightRange, BuffType.Buff): return "You got used to the dark, sharpening your senses";
+        case (PlayerStatistics.Luck, BuffType.Buff): return "You feel the winds of fortune shifting in your favor";
         case (PlayerStatistics.CobaltPickRate, BuffType.Buff): return "You learn to harvest more materials from rocks";
         
         case (PlayerStatistics.Armor, BuffType.Debuff): return "Toxic air makes armor corrode faster";
@@ -53,6 +54,7 @@
         case PlayerStatistics.ReloadSpeed: return "Reload speed";
         case PlayerStatistics.ShotRange: return "Worker attack range";
         case PlayerStatistics.SightRange: return "Worker sight range";
+        case PlayerStatistics.Luck: return "Worker luck";
         case PlayerStatistics.CobaltPickRate: return "Cobalt pickup rate";
       }
 

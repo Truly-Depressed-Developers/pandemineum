@@ -171,7 +171,6 @@ namespace Statistics {
               break;
             }
           }
-
           break;
         }
         default: {

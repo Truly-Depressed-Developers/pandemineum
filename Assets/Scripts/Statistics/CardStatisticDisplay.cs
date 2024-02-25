@@ -35,30 +35,6 @@ namespace Statistics {
       value.color = isGood ? Color.green : Color.red;
 
       cardImage.sprite = stats.sprite;
-
-      // var buff = stats.buffType;
-      //
-      // // Fill out text fields' values
-      // string sign = stats.value > 0 ? "+" : "";
-      // value.text = sign + stats.value.ToString();
-      //
-      // entityType.text = stats.entityType.ToString();
-      // if (stats.entityType == EntityType.Player) {
-      //   chosenStatistic.text = stats.playerStatistic.ToString();
-      // }
-      //
-      // transform.parent.GetComponent<Image>().sprite = stats.sprite;
-      //
-      // chosenStatistic.text = stats.enemyStatistic.ToString();
-      // if (buff == BuffType.Buff) {
-      //   value.color = Color.green;
-      //   entityType.color = Color.green;
-      //   chosenStatistic.color = Color.green;
-      // } else {
-      //   value.color = Color.red;
-      //   entityType.color = Color.red;
-      //   chosenStatistic.color = Color.red;
-      // }
     }
   }
 }
