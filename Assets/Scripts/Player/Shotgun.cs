@@ -12,12 +12,12 @@ namespace Player {
 
     [SerializeField] private float spread;
     [SerializeField] private int pellets;
-    [SerializeField] private float range;
+    [SerializeField] public float range;
+    [SerializeField] public float damage = 20f;
     [SerializeField] private int clipSize;
-    [SerializeField] private float damage = 20f;
 
     [SerializeField] private float shotCooldown;
-    [SerializeField] private float reloadTime;
+    [SerializeField] public float reloadTime;
 
     [SerializeField] private LayerMask hitColliderLayers;
 

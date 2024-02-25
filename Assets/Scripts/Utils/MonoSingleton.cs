@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 namespace Utils {
-  [DefaultExecutionOrder(-999)]
+  [DefaultExecutionOrder(-99999999)]
   public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T> {
     public static T I { get; private set; }
 

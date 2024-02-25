@@ -1,4 +1,4 @@
-public enum PlayerStatistics
+﻿public enum PlayerStatistics
 {
     Health,
     Armor,
@@ -7,5 +7,6 @@ public enum PlayerStatistics
     ReloadSpeed,
     ShotRange,
     SightRange,
-    Luck
+    Luck,
+    CobaltPickRate
 }
