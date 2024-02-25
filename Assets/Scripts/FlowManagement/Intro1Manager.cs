@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
@@ -11,6 +11,10 @@ namespace FlowManagement {
       pd.stopped += _ => {
         Flow.I.StartCoroutine(Flow.I.LoadTheMineFake());
       };
+    }
+
+    public void onSkip() {
+      pd.time = pd.duration;
     }
   }
 }
