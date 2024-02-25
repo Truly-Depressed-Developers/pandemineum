@@ -21,3 +21,10 @@ MonoBehaviour:
   MaxCavernSize: 11
   MinAverage: 25
   MaxAverage: 50
+  troop_collision: 6
+  enemy_troop_amount: 12
+  min_enemy_per_troop: 3
+  max_enemy_per_troop: 6
+  troop_boundry_box_size: 7
+  min_kobalt_percentage: 0.12
+  max_kobalt_percentage: 0.18
