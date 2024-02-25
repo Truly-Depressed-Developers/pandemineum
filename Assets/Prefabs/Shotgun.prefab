@@ -136,11 +136,13 @@ MonoBehaviour:
   pellets: 4
   range: 7
   clipSize: 6
+  damage: 20
   shotCooldown: 0.3
   reloadTime: 1.2
   hitColliderLayers:
     serializedVersion: 2
     m_Bits: 768
+  shotgun_sound: {fileID: 8300000, guid: 0f79f1a7df616af4d8374985046c2e1e, type: 3}
 --- !u!120 &9196422923291117361
 LineRenderer:
   serializedVersion: 2

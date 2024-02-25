@@ -135,13 +135,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kobold (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 5265941706854281550, guid: f3764493d08e0424ca4725329730dc13, type: 3}
-      propertyPath: m_AnchorMax.x
+    - target: {fileID: 646441104614171102, guid: f3764493d08e0424ca4725329730dc13, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5265941706854281550, guid: f3764493d08e0424ca4725329730dc13, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.571
+      objectReference: {fileID: 0}
+    - target: {fileID: 5265941706854281550, guid: f3764493d08e0424ca4725329730dc13, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6993128474116889645, guid: f3764493d08e0424ca4725329730dc13, type: 3}
       propertyPath: m_LocalPosition.x
@@ -200,13 +204,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kobold
       objectReference: {fileID: 0}
-    - target: {fileID: 5265941706854281550, guid: f3764493d08e0424ca4725329730dc13, type: 3}
-      propertyPath: m_AnchorMax.x
+    - target: {fileID: 646441104614171102, guid: f3764493d08e0424ca4725329730dc13, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5265941706854281550, guid: f3764493d08e0424ca4725329730dc13, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.571
+      objectReference: {fileID: 0}
+    - target: {fileID: 5265941706854281550, guid: f3764493d08e0424ca4725329730dc13, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6993128474116889645, guid: f3764493d08e0424ca4725329730dc13, type: 3}
       propertyPath: m_LocalPosition.x
@@ -323,6 +331,136 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2270992693525138366, guid: b6e642e196231b845a53ab757f0e53ce, type: 3}
   m_PrefabInstance: {fileID: 179649014}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &266168141
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818479931560732404, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_Name
+      value: Cobalt Ore (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5849916283483606738, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5849916283483606738, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+--- !u!1001 &702568697
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818479931560732404, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_Name
+      value: Cobalt Ore (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5849916283483606738, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5849916283483606738, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
 --- !u!1001 &758029695
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -335,13 +473,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kobold (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 5265941706854281550, guid: f3764493d08e0424ca4725329730dc13, type: 3}
-      propertyPath: m_AnchorMax.x
+    - target: {fileID: 646441104614171102, guid: f3764493d08e0424ca4725329730dc13, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5265941706854281550, guid: f3764493d08e0424ca4725329730dc13, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.571
+      objectReference: {fileID: 0}
+    - target: {fileID: 5265941706854281550, guid: f3764493d08e0424ca4725329730dc13, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6993128474116889645, guid: f3764493d08e0424ca4725329730dc13, type: 3}
       propertyPath: m_LocalPosition.x
@@ -398,11 +540,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.5614133
+      value: -8.61
       objectReference: {fileID: 0}
     - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.12197304
+      value: -0.66
       objectReference: {fileID: 0}
     - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -583,6 +725,71 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+--- !u!1001 &1082751004
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818479931560732404, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_Name
+      value: Cobalt Ore (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5849916283483606738, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5849916283483606738, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
 --- !u!1001 &1153506118
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -595,13 +802,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kobold (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 5265941706854281550, guid: f3764493d08e0424ca4725329730dc13, type: 3}
-      propertyPath: m_AnchorMax.x
+    - target: {fileID: 646441104614171102, guid: f3764493d08e0424ca4725329730dc13, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5265941706854281550, guid: f3764493d08e0424ca4725329730dc13, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.571
+      objectReference: {fileID: 0}
+    - target: {fileID: 5265941706854281550, guid: f3764493d08e0424ca4725329730dc13, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6993128474116889645, guid: f3764493d08e0424ca4725329730dc13, type: 3}
       propertyPath: m_LocalPosition.x
@@ -648,6 +859,71 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3764493d08e0424ca4725329730dc13, type: 3}
+--- !u!1001 &1306768775
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818479931560732404, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_Name
+      value: Cobalt Ore (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5849916283483606738, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5849916283483606738, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
 --- !u!1001 &1525870534
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -699,6 +975,71 @@ PrefabInstance:
     - target: {fileID: 2818479931560732404, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
       propertyPath: m_Name
       value: Cobalt Ore (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5849916283483606738, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5849916283483606738, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+--- !u!1001 &1669959260
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679247558839771651, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818479931560732404, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+      propertyPath: m_Name
+      value: Cobalt Ore (8)
       objectReference: {fileID: 0}
     - target: {fileID: 5849916283483606738, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
       propertyPath: m_AnchorMax.x
@@ -850,6 +1191,11 @@ SceneRoots:
   - {fileID: 1153506118}
   - {fileID: 758029695}
   - {fileID: 2067729026}
+  - {fileID: 1306768775}
+  - {fileID: 702568697}
+  - {fileID: 1669959260}
+  - {fileID: 1082751004}
+  - {fileID: 266168141}
   - {fileID: 922636100}
   - {fileID: 996826505}
   - {fileID: 1031628629}

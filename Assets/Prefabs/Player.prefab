@@ -715,6 +715,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2236252746224153508, guid: 94e8b3067c8228b48a69c94d8d68dbd3, type: 3}
+      propertyPath: shotgun_sound
+      value: 
+      objectReference: {fileID: 8300000, guid: 0f79f1a7df616af4d8374985046c2e1e, type: 3}
     - target: {fileID: 8028292883001048627, guid: 94e8b3067c8228b48a69c94d8d68dbd3, type: 3}
       propertyPath: m_Name
       value: Shotgun
