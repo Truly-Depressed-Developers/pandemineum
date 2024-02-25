@@ -110,7 +110,19 @@ MonoBehaviour:
     m_Bits: 128
   onDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5905184027846843884}
+        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
+        m_MethodName: OnDeath
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onDamageReceived:
     m_PersistentCalls:
       m_Calls: []
@@ -179,6 +191,9 @@ MonoBehaviour:
   minJumpDistance: 3.5
   movementDirectionOuterAngle: 30
   movementDirectionInnerAngle: 30
+  cobaltDropChance: 0.08
+  cobaltDropAmount: 15
+  chunkPrefab: {fileID: 8630750462472116999, guid: 054ee9abfa8b39d4fb69b23756119c83, type: 3}
 --- !u!50 &6033382115098625919
 Rigidbody2D:
   serializedVersion: 4

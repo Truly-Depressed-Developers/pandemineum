@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Cobalt;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour {
@@ -13,8 +14,12 @@ public class Enemy : MonoBehaviour {
   [SerializeField] private float movementDirectionOuterAngle = 30f;
   [SerializeField] private float movementDirectionInnerAngle = 30f;
 
+  [SerializeField] private float cobaltDropChance;
+  [SerializeField] private float cobaltDropAmount;
+  [SerializeField] private GameObject chunkPrefab;
+
   private bool canJump = true;
-  private bool inJump = false;
+  private bool inJump;
 
   private Rigidbody2D rb;
 
@@ -77,5 +82,14 @@ public class Enemy : MonoBehaviour {
     inJump = false;
     yield return new WaitForSeconds(jumpCooldown);
     canJump = true;
+  }
+
+  public void OnDeath() {
+    if (Random.value > cobaltDropChance) return;
+
+    var chunkGO = Instantiate(chunkPrefab, transform.position, Quaternion.identity);
+    if(!chunkGO.TryGetComponent(out Chunk chunk));
+    
+    chunk.SetRichness(Mathf.FloorToInt(Random.Range(cobaltDropAmount * 0.8f, cobaltDropAmount * 1.2f)));
   }
 }
