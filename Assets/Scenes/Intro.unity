@@ -149,12 +149,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 405306002}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1010222018}
+  m_Father: {fileID: 2010309070}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -181,7 +181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "istnia\u0142 tylko jeden haczyk..."
+  m_text: "Istnia\u0142 tylko jeden haczyk..."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dcb7558a8455ab5458dd597ddca43fb8, type: 2}
   m_sharedMaterial: {fileID: -3839664536591387896, guid: dcb7558a8455ab5458dd597ddca43fb8, type: 2}
@@ -415,12 +415,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 932024722}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1010222018}
+  m_Father: {fileID: 2010309070}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -447,9 +447,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Pewnego dnia zarz\u0105d wpad\u0142 na pomys\u0142 zmonetyzowania piek\u0142a
-    jakie zgotowa\u0142e\u015B wi\u0119\u017Ani\u0105, tworzac na jego podstawie
-    reality show dla szerszej publiczno\u015Bci"
+  m_text: "Pewnego dnia szefostwo wpad\u0142o na pomys\u0142 zmonetyzowania piek\u0142a,
+    jakie zgotowa\u0142e\u015B wi\u0119\u017Aniom, tworzac na jego podstawie reality
+    show dla szerszej publiczno\u015Bci"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dcb7558a8455ab5458dd597ddca43fb8, type: 2}
   m_sharedMaterial: {fileID: -3839664536591387896, guid: dcb7558a8455ab5458dd597ddca43fb8, type: 2}
@@ -577,17 +577,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1848398009}
-  - {fileID: 932024723}
-  - {fileID: 405306003}
-  - {fileID: 1426244556}
+  m_Children: []
   m_Father: {fileID: 2010309070}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000061035, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 2112, y: 1188}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1010222019
 MonoBehaviour:
@@ -602,14 +598,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4839bb41ac994f049bd46e82220fdea3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b9ed19b96841e2b44a1b9816da96220d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -674,12 +670,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1015240895}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1580936794}
+  m_Father: {fileID: 2010309070}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -932,8 +928,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "..przez co nigdy nie mia\u0142e\u015B jednej pracy d\u0142u\u017Cej ni\u017C
-    miesi\u0105c. "
+  m_text: "...przez to nigdy nie mia\u0142e\u015B jednej pracy d\u0142u\u017Cej ni\u017C
+    miesi\u0105c"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dcb7558a8455ab5458dd597ddca43fb8, type: 2}
   m_sharedMaterial: {fileID: -3839664536591387896, guid: dcb7558a8455ab5458dd597ddca43fb8, type: 2}
@@ -1017,12 +1013,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1255089911}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1580936794}
+  m_Father: {fileID: 2010309070}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1089,7 +1085,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "...nikt nie moze zgin\u0105c"
+  m_text: "...nikt nie mo\u017Ce zgin\u0105\u0107"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dcb7558a8455ab5458dd597ddca43fb8, type: 2}
   m_sharedMaterial: {fileID: -3839664536591387896, guid: dcb7558a8455ab5458dd597ddca43fb8, type: 2}
@@ -1173,16 +1169,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1426244552}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1010222018}
+  m_Father: {fileID: 2010309070}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 400}
   m_SizeDelta: {x: 1800, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1580936793
@@ -1215,16 +1211,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1015240896}
-  - {fileID: 1255089915}
-  - {fileID: 2098349884}
+  m_Children: []
   m_Father: {fileID: 2010309070}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000061035, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 2112, y: 1188}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1580936795
 MonoBehaviour:
@@ -1246,7 +1239,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 39fa6883d5257c541abdd4058f64b690, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 617c218d49c00f74e92665902374f32f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1311,12 +1304,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1848398008}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1010222018}
+  m_Father: {fileID: 2010309070}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1344,8 +1337,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Przez fakt, \u017Ce w kopalni pracuj\u0105 skazani na do\u017Cywocie przest\u0119pcy,
-    nie masz skrupu\u0142\xF3w stawia\u0107 ich w coraz to bardziej nieludzkich warunkach
-    \r\n"
+    nie masz skrupu\u0142\xF3w stawia\u0107 ich w coraz to bardziej nieludzkich warunkach\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dcb7558a8455ab5458dd597ddca43fb8, type: 2}
   m_sharedMaterial: {fileID: -3839664536591387896, guid: dcb7558a8455ab5458dd597ddca43fb8, type: 2}
@@ -1542,7 +1534,14 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1580936794}
+  - {fileID: 1015240896}
+  - {fileID: 1255089915}
+  - {fileID: 2098349884}
   - {fileID: 1010222018}
+  - {fileID: 1848398009}
+  - {fileID: 932024723}
+  - {fileID: 405306003}
+  - {fileID: 1426244556}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1673,7 +1672,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Dzieki znajomo\u015Bci\u0105 wujka dosta\u0142e\u015B prac\u0119 jako
+  m_text: "Dzi\u0119ki znajomo\u015Bciom wujka dosta\u0142e\u015B prac\u0119 jako
     nadzorca Karnej Kopalni Kobaltu na Marsie"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dcb7558a8455ab5458dd597ddca43fb8, type: 2}
@@ -1758,12 +1757,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2098349880}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1580936794}
+  m_Father: {fileID: 2010309070}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
