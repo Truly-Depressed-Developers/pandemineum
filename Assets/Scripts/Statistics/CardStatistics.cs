@@ -25,7 +25,7 @@ namespace Statistics {
     // Enemy
     private readonly Vector4 enemyHealthBounds = new(15, 25, 25, 40);
     private readonly Vector4 enemyArmorBounds = new(2, 4, 15, 35); // base 0
-    private readonly Vector4 enemyDamageBounds = new(10, 20, 20, 40); // base 15
+    private readonly Vector4 enemyDamageBounds = new(5, 10, 20, 40); // base 15
     private readonly Vector4 enemySpeedBounds = new(5, 15, 15, 25);
     private readonly Vector4 enemyDropRateBounds = new(10, 25, 20, 45);
     private readonly Vector4 enemyShotRangeBounds = new(10, 25, 20, 40);
@@ -88,7 +88,7 @@ namespace Statistics {
             }
             case PlayerStatistics.Luck: {
               value = UnityEngine.Random.Range(playerLuckBounds.x, playerLuckBounds.y);
-              sprite = LoadSprite("player_card");
+              sprite = LoadSprite("player_luck");
               break;
             }
             case PlayerStatistics.CobaltPickRate: {
@@ -136,7 +136,7 @@ namespace Statistics {
             }
             case PlayerStatistics.Luck: {
               value = -UnityEngine.Random.Range(playerLuckBounds.z, playerLuckBounds.w);
-              sprite = LoadSprite("player_card");
+              sprite = LoadSprite("player_luck");
               break;
             }
             case PlayerStatistics.CobaltPickRate: {
@@ -171,7 +171,7 @@ namespace Statistics {
             }
             case EnemyStatistics.ShotRange: {
               value = -UnityEngine.Random.Range(enemyShotRangeBounds.x, enemyShotRangeBounds.y);
-              sprite = LoadSprite("enemy_card");
+              sprite = LoadSprite("enemy_shot_range");
               break;
             }
             case EnemyStatistics.DropRate: {
@@ -204,7 +204,7 @@ namespace Statistics {
             }
             case EnemyStatistics.ShotRange: {
               value = UnityEngine.Random.Range(enemyShotRangeBounds.z, enemyShotRangeBounds.w);
-              sprite = LoadSprite("enemy_card");
+              sprite = LoadSprite("enemy_shot_range");
               break;
             }
             case EnemyStatistics.DropRate: {
