@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cc95bcb78c4a4c4daab6dec8a62820d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allowedTime: 30
+  allowedTime: 300
   counter: {fileID: 2872633092228268161}
   timeout_effect: {fileID: 0}
   onTimeRunOut:
