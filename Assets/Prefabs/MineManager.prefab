@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6446576534690199974}
   - component: {fileID: 787973057814193359}
   - component: {fileID: 6128693312975559146}
+  - component: {fileID: 7495145403299427275}
   m_Layer: 0
   m_Name: MineManager
   m_TagString: Untagged
@@ -48,6 +49,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cobaltRequirement: 200
   counter: {fileID: 4757952149476909203}
+  onThresholdCrossed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: ExtractionZone, Assembly-CSharp
+        m_MethodName: changeObjectiveStatus
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &6128693312975559146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,6 +78,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedTime: 300
   counter: {fileID: 2872633092228268161}
+  onTimeRunOut:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Generator.CaveEnemySpawner, Assembly-CSharp
+        m_MethodName: makeAngry
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+--- !u!114 &7495145403299427275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3420866590938314013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0ed175100b79cd48a216c56738ac275, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4539067019919446062
 GameObject:
   m_ObjectHideFlags: 0
