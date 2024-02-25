@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Statistics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,11 +14,17 @@ namespace Player {
     private Vector2 wishcamera_pos;
     private Vector2 mouse_pos, world_m_pos, outlook_dir;
 
+    private void Start() {
+      max_lookout_dist *= StatisticsRepo.I.PlayerSightRangeMul;
+    }
+
     private void Update() {
       CalculateCameraWishPosition();
     }
 
     private void CalculateCameraWishPosition() {
+      if(!player || !player_camera) return;
+
       mouse_pos = Mouse.current.position.ReadValue();
       world_m_pos = player_camera.ScreenToWorldPoint(mouse_pos);
       outlook_dir = world_m_pos - (Vector2)player.position;

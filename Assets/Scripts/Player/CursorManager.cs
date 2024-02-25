@@ -13,6 +13,12 @@ public class CursorManager : MonoBehaviour {
   [SerializeField] private Transform shellSpawnPoint;
   [SerializeField] private Slider reloadBar;
 
+  [Header("Shotgun audio")]
+  [Space(5)]
+  [SerializeField] private AudioSource audio_src;
+  [SerializeField] private AudioClip shell_load_seff;
+  [SerializeField] private AudioClip shotgun_reload_seff;
+
   private Vector3 targetPosition;
 
   private Camera mainCamera;
@@ -34,7 +40,7 @@ public class CursorManager : MonoBehaviour {
     targetPosition = mousePos;
   }
 
-  private void FixedUpdate() {
+  private void Update() {
     UpdateTargetPosition();
 
     transform.position = Vector3.Lerp(transform.position, targetPosition, smoothSpeed * Time.deltaTime);
@@ -104,6 +110,13 @@ public class CursorManager : MonoBehaviour {
     float startValue = 0f;
     float endValue = 1f;
 
+    bool play_sound = true;
+    int shell_sound = shellsCount;
+    float shell_sound_treshold = animTime / shell_sound;
+    float shell_time = shell_sound_treshold;
+    if (currentShellsCount != 0)
+      play_sound = false;
+
     while (elapsedTime < animTime) {
       float progress = Mathf.Clamp01(elapsedTime / animTime);
 
@@ -113,9 +126,23 @@ public class CursorManager : MonoBehaviour {
 
       elapsedTime += Time.deltaTime;
 
+      // reload sounds
+      if (play_sound) {
+        shell_time -= Time.deltaTime;
+        if (shell_sound > 0) {
+          if (shell_time <= 0) {
+            shell_sound--;
+            shell_time = shell_sound_treshold;
+            audio_src.PlayOneShot(shell_load_seff);
+          }
+        }
+      }
+
       yield return null;
     }
 
+    if(play_sound)
+      audio_src.PlayOneShot(shotgun_reload_seff);
     reloadBar.value = endValue;
   }
 

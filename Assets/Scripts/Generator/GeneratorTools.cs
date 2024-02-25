@@ -8,6 +8,7 @@ namespace Generator {
     public Tilemap GroundTilemap;
     public Tile[] ground_tiles;
     public System.Random level_gen = null;
+    [SerializeField] private LayerMask block_spawn_layer;
 
     public void GenerateSphere(int radious, Vector2Int sph_pos) {
       Vector2Int new_pos = new Vector2Int(0, 0);
@@ -148,7 +149,11 @@ namespace Generator {
     }
 
     public bool collision_check(Vector2 pos, Vector2[] other_pos, float collision_dist, int array_size = -1) {
+
       if (!check_position_valid(pos))
+        return true;
+
+      if (Physics2D.OverlapCircle(pos, 0.5f, block_spawn_layer))
         return true;
 
       if (array_size == -1)
@@ -156,11 +161,11 @@ namespace Generator {
 
       for (int i = 0; i < array_size; i++) { // colliding
         if (other_pos[i] == null)
-          return true;
-        if (Vector2.Distance(pos, other_pos[i]) <= collision_dist)
           return false;
+        if (Vector2.Distance(pos, other_pos[i]) <= collision_dist)
+          return true;
       }
-      return true;
+      return false;
     }
 
     public System.Random make_gen(string new_seed) {
