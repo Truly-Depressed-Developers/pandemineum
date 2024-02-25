@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Utils;
 
 public class Movement : MonoBehaviour {
   [SerializeField] public float moveSpeed = 2f;
@@ -26,6 +27,17 @@ public class Movement : MonoBehaviour {
   }
 
   private void MovePlayer() {
-    rb.velocity = moveSpeed * direction;
+    rb.velocity = moveSpeed * CalculateMovementPenalty() * direction;
+  }
+
+  private float CalculateMovementPenalty() {
+    Vector3 lookDirection = MouseLocation.I.Position - transform.position;
+    Vector3 moveDir = direction;
+
+    float similarity = Vector3.Dot(lookDirection.normalized, moveDir.normalized);
+    float movementPenalty = similarity > 0.2f ? 1 : (similarity - 0.2f) / 3f + 1f;
+    
+    Debug.Log(movementPenalty);
+    return movementPenalty;
   }
 }
