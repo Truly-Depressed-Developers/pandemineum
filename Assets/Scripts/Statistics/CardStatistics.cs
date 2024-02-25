@@ -36,9 +36,9 @@ public class CardStatistics : ScriptableObject {
     this.drawStatistics();
   }
 
-  private void loadBackupImage() {
-    this.sprite = (Sprite)Resources.Load("Cards/good_card", typeof(Sprite));
-  }
+  //private void loadBackupImage() {
+  //  this.sprite = (Sprite)Resources.Load("Cards/good_card", typeof(Sprite));
+  //}
 
   private Sprite loadSprite(string name) {
     return (Sprite)Resources.Load("Cards/" + name, typeof(Sprite));
@@ -84,7 +84,7 @@ public class CardStatistics : ScriptableObject {
             };
           case PlayerStatistics.ReloadSpeed: {
               this.value = -UnityEngine.Random.Range(1, this.playerReloadSpeedThreshhold);
-              this.sprite = this.loadSprite("player_reloasd_speed");
+              this.sprite = this.loadSprite("player_reload_speed");
               break;
             };
           case PlayerStatistics.ShotRange: {
