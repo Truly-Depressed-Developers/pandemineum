@@ -1,13 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Threading.Tasks;
+using FlowManagement;
+using UnityEditor.Build.Reporting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
-{
-
-  public void Callback_NewGame() {
-    SceneManager.LoadScene(1);
+public class MainMenu : MonoBehaviour {
+  private void Awake() {
+    SceneManager.LoadSceneAsync("Support", LoadSceneMode.Additive);
   }
 
+  public void Callback_NewGame() {
+    Flow.I.StartCoroutine(Flow.I.LoadIntro1());
+  }
 }

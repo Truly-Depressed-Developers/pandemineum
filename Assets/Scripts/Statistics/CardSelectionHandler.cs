@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 namespace Statistics {
@@ -9,6 +10,7 @@ namespace Statistics {
     [SerializeField] private float moveTime = 0.1f;
     [Range(0, 2f), SerializeField] private float scaleAmount = 1.05f;
     [SerializeField] private CardStatisticDisplay csd;
+    public UnityEvent OnCardBought;
     
     private CardStatistics statistics;
 
@@ -83,6 +85,7 @@ namespace Statistics {
       if (this.canBeClicked && this.gameObject != null) {
         this.canBeClicked = false;
         UpdateStatisticsRepo();
+        OnCardBought.Invoke();
       }
     }
 

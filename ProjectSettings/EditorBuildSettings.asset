@@ -6,19 +6,31 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
-    guid: 24cfa2bbaf56bf34386d2040597acce5
+    path: Assets/Scenes/Prod/MainMenu.unity
+    guid: 94aae5e7422b72a43929d5205e93671b
   - enabled: 1
-    path: Assets/Scenes/GameplayLoop_Better.unity
-    guid: acd694b4a430834438a5a50bd0f41170
+    path: Assets/Scenes/Prod/BuyCEO.unity
+    guid: 3d4bb1aa51e89174e9a157aba9dadb98
   - enabled: 1
-    path: Assets/Scenes/Cards.unity
-    guid: 802b08511624b89458ad6f9d3b4406e9
+    path: Assets/Scenes/Prod/BuyPlayer.unity
+    guid: 1b97c40bf8dabb840adf5ba8e6de65cd
   - enabled: 1
-    path: Assets/Scenes/Lose.unity
-    guid: 8c1aa623310a36949ae3bc82cd33d36d
-  - enabled: 0
-    path: Assets/Scenes/Terrain Generation.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Prod/Lose.unity
+    guid: 5e088b5a9bf7be84482d3b668dd3a1c9
+  - enabled: 1
+    path: Assets/Scenes/Prod/Support.unity
+    guid: 8eee111521e17a2408e8eaf5d115baf6
+  - enabled: 1
+    path: Assets/Scenes/Prod/Intro.unity
+    guid: da07951e8369f304baa76be9b2e710e7
+  - enabled: 1
+    path: Assets/Scenes/Prod/Intro2.unity
+    guid: ca7f375603206f941800573e909a6f63
+  - enabled: 1
+    path: Assets/Scenes/Prod/TheMineFake.unity
+    guid: 62cc8eb7a71bfc54c91a00e244a4b410
+  - enabled: 1
+    path: Assets/Scenes/Prod/TheMine.unity
+    guid: 3e7dce192cdc2e848a0833e77914d662
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 0f99b8fd0a291ae48a5fd6d25a7e82e6, type: 2}
