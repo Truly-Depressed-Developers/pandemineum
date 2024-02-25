@@ -137,13 +137,13 @@ namespace Generator {
     public bool check_position_valid(Vector2 pos) {
       if (!GroundTilemap.HasTile(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y),0)))
         return false;
-      if (!GroundTilemap.HasTile(new Vector3Int(Mathf.RoundToInt(pos.x + 0.5f), Mathf.RoundToInt(pos.y),0)))
+      if (!GroundTilemap.HasTile(new Vector3Int(Mathf.RoundToInt(pos.x + 1f), Mathf.RoundToInt(pos.y),0)))
         return false;
-      if (!GroundTilemap.HasTile(new Vector3Int(Mathf.RoundToInt(pos.x - 0.5f), Mathf.RoundToInt(pos.y),0)))
+      if (!GroundTilemap.HasTile(new Vector3Int(Mathf.RoundToInt(pos.x - 1f), Mathf.RoundToInt(pos.y),0)))
         return false;
-      if (!GroundTilemap.HasTile(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y + 0.5f),0)))
+      if (!GroundTilemap.HasTile(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y + 1f),0)))
         return false;
-      if (!GroundTilemap.HasTile(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y - 0.5f),0)))
+      if (!GroundTilemap.HasTile(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y - 1f),0)))
         return false;
       return true;
     }

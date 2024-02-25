@@ -48,6 +48,7 @@ MonoBehaviour:
   cave_profile: {fileID: 11400000, guid: 36d330a1bcf4c754e8c0e81954b957a2, type: 2}
   gen_tools: {fileID: 4376927933902367511}
   enemy_pref: {fileID: 646441104614171102, guid: f3764493d08e0424ca4725329730dc13, type: 3}
+  angry_enemy_prefab: {fileID: 646441104614171102, guid: bffd6a72baee91b4aac0b0fcff2526cd, type: 3}
 --- !u!1 &4459099504742036565
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,6 +97,8 @@ MonoBehaviour:
   cave_profile: {fileID: 11400000, guid: 36d330a1bcf4c754e8c0e81954b957a2, type: 2}
   gen_tools: {fileID: 4376927933902367511}
   kobalt_pref: {fileID: 2818479931560732404, guid: 5eb54a188058505479b713e90f2f4cb9, type: 3}
+  green_mushroom: {fileID: 882200968370684084, guid: e24399e3eadcdf142bd1e169e350b998, type: 3}
+  lamp_pref: {fileID: 4858623260688637647, guid: 6cdf9769dd08f4b43b88aaf9fb654440, type: 3}
   kobalt_spawned: 0
   kobalt_richness: 0
 --- !u!1 &4505193263600882452
