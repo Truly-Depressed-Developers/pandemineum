@@ -42,7 +42,7 @@ public class Movement : MonoBehaviour {
   }
 
   private void MovePlayer() {
-    float constCalculated = moveSpeed;
+    float constCalculated = moveSpeed * CalculateMovementPenalty();
 
     if (Time.time - lastDashTime < dashTime && Time.time > dashStartTime) {
       rb.velocity = dashMultiplayer * constCalculated * dashDirection;
@@ -52,7 +52,7 @@ public class Movement : MonoBehaviour {
     }
             
     inDashMove = false;
-    rb.velocity = constCalculated * CalculateMovementPenalty() * direction;
+    rb.velocity = constCalculated * direction;
   }
   
   public void OnIndicateDash(InputAction.CallbackContext ctx) {
@@ -69,8 +69,7 @@ public class Movement : MonoBehaviour {
 
     float similarity = Vector3.Dot(lookDirection.normalized, moveDir.normalized);
     float movementPenalty = similarity > 0.2f ? 1 : (similarity - 0.2f) / 3f + 1f;
-    
-    Debug.Log(movementPenalty);
+
     return movementPenalty;
   }
   
