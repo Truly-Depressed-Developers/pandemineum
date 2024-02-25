@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class CardSelectionHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler {
   [SerializeField] private float verticalMoveAmount = 30f;
   [SerializeField] private float moveTime = 0.1f;
   [Range(0, 2f), SerializeField] private float scaleAmount = 1.05f;
 
-  public CardStatistics statistics = null;
+  public CardStatistics statistics;
 
   private Vector3 startPos;
   private Vector3 startScale;
@@ -67,8 +68,6 @@ public class CardSelectionHandler : MonoBehaviour, IPointerEnterHandler, IPointe
   }
 
   public void onClick() {
-    //Debug.Log("clicked");
-    //Debug.Log(this.statistics.value);
     this.updateStats(this.statistics);
   }
 

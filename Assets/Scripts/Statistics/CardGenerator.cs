@@ -19,6 +19,7 @@ public class CardPrefabGenerator : MonoBehaviour {
       for (int j = 0; j < card.childCount; j++) {
         // Draw statistics for it
         var cardStatisticsScriptableObjects = ScriptableObject.CreateInstance<CardStatistics>();
+        
         var displayStatistics = card.transform.GetChild(j);
         var buff = cardStatisticsScriptableObjects.buffType;
 
@@ -37,6 +38,9 @@ public class CardPrefabGenerator : MonoBehaviour {
         if (cardStatisticsScriptableObjects.entityType == EntityType.Player) {
           card5.chosenStatistic.text = cardStatisticsScriptableObjects.playerStatistic.ToString();
         }
+
+        card5.transform.parent.GetComponent<Image>().sprite = cardStatisticsScriptableObjects.sprite;
+
         card5.chosenStatistic.text = cardStatisticsScriptableObjects.enemyStatistic.ToString();
         if (buff == BuffType.Buff) {
           card5.value.color = Color.green;
