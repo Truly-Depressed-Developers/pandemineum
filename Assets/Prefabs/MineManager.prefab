@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 787973057814193359}
   - component: {fileID: 6128693312975559146}
   - component: {fileID: 7495145403299427275}
+  - component: {fileID: 4266338032181871680}
   - component: {fileID: 5489404034990112556}
   m_Layer: 0
   m_Name: MineManager
@@ -79,6 +80,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedTime: 30
   counter: {fileID: 2872633092228268161}
+  timeout_effect: {fileID: 0}
   onTimeRunOut:
     m_PersistentCalls:
       m_Calls:
@@ -95,6 +97,18 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &7495145403299427275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3420866590938314013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0ed175100b79cd48a216c56738ac275, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4266338032181871680
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -21,6 +21,7 @@ namespace Player {
 
     [SerializeField] private LayerMask hitColliderLayers;
     [SerializeField] private AudioClip shotgun_sound;
+    [SerializeField] private AudioSource audio_src;
 
     private CursorManager cursorManager;
     private PlayerCameraEffects playerCamEff;
@@ -115,7 +116,7 @@ namespace Player {
       }
 
       lastShot = Time.time;
-      AudioSource.PlayClipAtPoint(shotgun_sound, transform.position, 1.5f);
+      audio_src.PlayOneShot(shotgun_sound);
     }
 
     private IEnumerator DoReload() {
