@@ -185,11 +185,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectionRange: 10
-  movementSpeed: 1
-  jumpForce: 200
+  movementSpeed: 3
+  jumpForce: 350
   jumpCooldown: 2
   jumpFreezeTime: 0.5
-  minJumpDistance: 3.5
+  minJumpDistance: 7
   movementDirectionOuterAngle: 30
   movementDirectionInnerAngle: 30
   cobaltDropChance: 0.08

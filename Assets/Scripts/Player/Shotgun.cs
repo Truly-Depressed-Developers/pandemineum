@@ -20,6 +20,7 @@ namespace Player {
     [SerializeField] public float reloadTime;
 
     [SerializeField] private LayerMask hitColliderLayers;
+    [SerializeField] private AudioClip shotgun_sound;
 
     private CursorManager cursorManager;
     private PlayerCameraEffects playerCamEff;
@@ -85,8 +86,8 @@ namespace Player {
 
       for (int i = 0; i < pellets; i++) {
         float randomAngle = Random.Range(-spread, spread);
-        var randomDir = (Quaternion.AngleAxis(randomAngle, transform.forward) * shotgunDir).normalized;
-        var pelletPoint = tip.position + randomDir * range * Mathf.Sign(transform.parent.transform.localScale.x);
+        var randomDir = (Quaternion.AngleAxis(randomAngle, transform.forward) * shotgunDir).normalized * Mathf.Sign(transform.parent.transform.localScale.x);
+        var pelletPoint = tip.position + randomDir * range ;
 
         Vector3[] arr = { tip.position, pelletPoint };
         var lri = Instantiate(lineRendererInstance);
@@ -94,7 +95,7 @@ namespace Player {
         Raycast(tip.position, randomDir, out float newRange);
 
         if (newRange < range) {
-          arr[1] = tip.position + randomDir * newRange * Mathf.Sign(transform.parent.transform.localScale.x);
+          arr[1] = tip.position + randomDir * newRange;
         }
 
         SetLrProperties(lri, arr);
@@ -114,6 +115,7 @@ namespace Player {
       }
 
       lastShot = Time.time;
+      AudioSource.PlayClipAtPoint(shotgun_sound, transform.position, 1.5f);
     }
 
     private IEnumerator DoReload() {
