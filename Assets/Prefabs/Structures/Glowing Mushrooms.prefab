@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8177656981847572441}
   - component: {fileID: 7151840734375765915}
   - component: {fileID: 2914148599312081485}
+  - component: {fileID: 3703047066689035579}
   m_Layer: 0
   m_Name: Glowing Mushrooms
   m_TagString: Untagged
@@ -247,3 +248,19 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3703047066689035579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 882200968370684084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cb1e6fbc58536f47b38ae41fe1d2440, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visuals: {fileID: 2135466864540405868}
+  randomFlip: 1
+  min_rotation: 0
+  max_rotation: 0

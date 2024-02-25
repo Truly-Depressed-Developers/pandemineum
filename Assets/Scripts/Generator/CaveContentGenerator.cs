@@ -12,12 +12,18 @@ namespace Generator {
     [Header("Stuff to generate")]
     [Space(5)]
     public GameObject kobalt_pref;
+    public GameObject green_mushroom;
+    public GameObject lamp_pref;
 
     private List<Vector2Int> spawn_tiles;
+    private int map_size = 0;
     private List<GameObject> spawned_kobalt = new List<GameObject>(0);
+    private List<GameObject> spawned_mushroom = new List<GameObject>(0);
+    private List<GameObject> spawned_lamps = new List<GameObject>(0);
 
     private int min_kobalt_richness = 20, max_kobalt_richenss = 30;
     private int ore_amount = 100, requested_ore_richness = 2000;
+    private float min_lamp_distance = 7.5f;
 
     // global read stats
     [HideInInspector] public int kobalt_spawned = 0;
@@ -28,9 +34,12 @@ namespace Generator {
       kobalt_spawned = 0;
       kobalt_richness = 0;
       spawn_tiles = gen_tools.get_average_tile_positions();
+      map_size = spawn_tiles.Count;
       if (gen == null)
         gen = new System.Random();
       create_kobalt_veins();
+      spawn_mushroom();
+      place_lamps();
       Debug.Log(kobalt_spawned);
       Debug.Log(kobalt_richness);
       done_generating = true;
@@ -72,6 +81,57 @@ namespace Generator {
       kobalt_richness += richness_gained - lost;
     }
 
+    private void spawn_mushroom() {
+      Bounds map_bounds = gen_tools.GroundTilemap.localBounds;
+      Vector2 min_bounds = map_bounds.center - map_bounds.extents;
+      Vector2 max_bounds = map_bounds.center + map_bounds.extents;
+      min_bounds = new Vector2((int)min_bounds.x, (int)min_bounds.y);
+      max_bounds = new Vector2((int)max_bounds.x, (int)max_bounds.y);
+      int amount = Mathf.CeilToInt(map_size * 0.2f); int tries = 20000;
+      Vector2[] spawn_pos = new Vector2[amount]; int last_id = 0;
+      Vector2 newpos;
+      while(amount > 0 && tries > 0) {
+        tries--;
+        do {
+          newpos = new Vector2((int)Random.Range(min_bounds.x, max_bounds.x),
+            (int)Random.Range(min_bounds.y, max_bounds.y));
+        } while (gen_tools.collision_check(newpos, spawn_pos, 1f, last_id));
+        create_mushroom(newpos);
+        spawn_pos[last_id] = newpos;
+        amount--; last_id++;
+      }
+    }
+
+    private void place_lamps() {
+      int amount = Mathf.CeilToInt(spawned_mushroom.Count * Random.Range(0.15f, 0.21f));
+      int err = 100;
+      Vector2 newpos = Vector2.zero;
+      while (amount > 0) {
+        err = 10; int id;
+        do {
+          id = Random.Range(0, spawned_mushroom.Count);
+          newpos = spawned_mushroom[id].transform.position;
+          err--;
+        }
+        while (!check_lamp(newpos) && err > 0);
+        amount--;
+        if (err == 0)
+          continue;
+        Destroy(spawned_mushroom[id]);
+        spawned_mushroom.RemoveAt(id);
+        create_lamp(newpos);
+      }
+    }
+
+    private bool check_lamp(Vector2 pos) {
+      for (int i = 0; i < spawned_lamps.Count; i++) {
+        if (Vector2.Distance(pos, spawned_lamps[i].transform.position) < min_lamp_distance) {
+          return false;
+        }
+      }
+      return true;
+    }
+
     // returns the amount of richness that was lost
     private int filter_correct_kobalt(List<GameObject> cobalt_list) {
       int richness_loss = 0;
@@ -92,6 +152,19 @@ namespace Generator {
       ore.SetRichness(gen.Next(min_kobalt_richness,max_kobalt_richenss));
       richness += ore.Richness;
       return a;
+    }
+
+    private GameObject create_mushroom(Vector2 pos) {
+      GameObject m = Instantiate(green_mushroom, transform);
+      m.transform.position = pos;
+      spawned_mushroom.Add(m);
+      return m;
+    }
+
+    private GameObject create_lamp(Vector2 pos) {
+      GameObject m = Instantiate(lamp_pref, transform);
+      m.transform.position = pos;
+      return m;
     }
 
     public float calculate_kobalt_richness(int kobalt_ore_amount , int kobalt_quota) {
