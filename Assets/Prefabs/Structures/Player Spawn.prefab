@@ -177,7 +177,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1961561345410412968}
-  - component: {fileID: 4263412686757691988}
+  - component: {fileID: 8321184818745542603}
   m_Layer: 12
   m_Name: totem
   m_TagString: Untagged
@@ -207,7 +207,7 @@ Transform:
   - {fileID: 1143638035668886652}
   m_Father: {fileID: 4960816538411417960}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &4263412686757691988
+--- !u!60 &8321184818745542603
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -251,16 +251,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.24358964, y: 1.8409433}
-      - {x: -0.41060686, y: 2.1878273}
-      - {x: -1.185689, y: 0.30901697}
-      - {x: -1.8342705, y: -0.8676752}
-      - {x: -1.4996638, y: -1.5491937}
-      - {x: 1.6863742, y: -1.5344964}
-      - {x: 1.996243, y: -0.89283335}
-      - {x: 1.5554335, y: -0.54353416}
-      - {x: 1.5703089, y: 0.2028358}
-      - {x: 1.0390439, y: 0.52898496}
+    - - {x: 0, y: 0.1865586}
+      - {x: -1.2819474, y: -0.049448818}
+      - {x: -1.5804594, y: -1.5810969}
+      - {x: 1.704544, y: -1.5259485}
+      - {x: 1.3370969, y: -0.11838442}
   m_UseDelaunayMesh: 0
 --- !u!1 &3547306765790554377
 GameObject:
