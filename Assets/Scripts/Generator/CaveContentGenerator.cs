@@ -48,7 +48,8 @@ namespace Generator {
     private void create_kobalt_veins() {
       List<Vector2Int> pos = new List<Vector2Int>(spawn_tiles); int id;
       int sp_tiles = pos.Count;
-      while(ore_amount > kobalt_spawned || requested_ore_richness > kobalt_richness) {
+      int bonus_kobalt = (int)(ore_amount * Random.Range(0.1f , 0.3f));
+      while(ore_amount + bonus_kobalt > kobalt_spawned || requested_ore_richness > kobalt_richness) {
         id = gen.Next(0, sp_tiles);
         spawn_vein(pos[id], gen.Next(2, 6), gen.Next(3, 6));
         pos.RemoveAt(id);
