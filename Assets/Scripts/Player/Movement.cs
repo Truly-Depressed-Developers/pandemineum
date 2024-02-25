@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using Utils;
 
 public class Movement : MonoBehaviour {
@@ -10,7 +11,8 @@ public class Movement : MonoBehaviour {
   [SerializeField] private float dashCooldown = 1.4f;
   [SerializeField] private float dashTime = 0.4f;
   [SerializeField] private float dashMultiplayer = 5f;
-  
+  [SerializeField] private Slider staminaSlider;
+
   private readonly float dashStartTime = 0.5f;
   
   private Vector2 lastDashDirection = new(0, 1);
@@ -26,6 +28,12 @@ public class Movement : MonoBehaviour {
   public bool IsRunning {
     get {
       return direction.x != 0 || direction.y != 0;
+    }
+  }
+
+  private void Start() {
+    if(staminaSlider == null) {
+      transform.Find("Canvas").Find("StaminaBar").TryGetComponent(out staminaSlider);
     }
   }
 
@@ -61,6 +69,7 @@ public class Movement : MonoBehaviour {
     dashDirection = lastDashDirection;
     inDashMove = true;
     lastDashTime = Time.time;
+    startBarAnimation(dashCooldown);
   }
 
   private float CalculateMovementPenalty() {
@@ -76,5 +85,29 @@ public class Movement : MonoBehaviour {
   
   public bool isInDashMove() {
     return inDashMove;
+  }
+
+  public void startBarAnimation(float time) {
+    StartCoroutine(AnimateBar(time));
+  }
+
+  private IEnumerator AnimateBar(float animTime) {
+    float elapsedTime = 0f;
+    float startValue = 0f;
+    float endValue = 1f;
+
+    while (elapsedTime < animTime) {
+      float progress = Mathf.Clamp01(elapsedTime / animTime);
+
+      float animatedValue = Mathf.Lerp(startValue, endValue, progress);
+
+      staminaSlider.value = animatedValue;
+
+      elapsedTime += Time.deltaTime;
+
+      yield return null;
+    }
+
+    staminaSlider.value = endValue;
   }
 }

@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 89271121001240208}
   - component: {fileID: 2236252746224153508}
   - component: {fileID: 9196422923291117361}
+  - component: {fileID: 637489385448220986}
   m_Layer: 7
   m_Name: Shotgun
   m_TagString: Untagged
@@ -143,6 +144,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4864
   shotgun_sound: {fileID: 8300000, guid: 0f79f1a7df616af4d8374985046c2e1e, type: 3}
+  audio_src: {fileID: 0}
 --- !u!120 &9196422923291117361
 LineRenderer:
   serializedVersion: 2
@@ -247,3 +249,65 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &637489385448220986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8028292883001048627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: da7df8d17184bfd4fb184adc8e16ae40, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 959b6263-e1e9-4723-8a7c-d6308dc7ce4e
+    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 656ccc30-2219-4efc-b2ea-3d1b1cca8858
+    m_ActionName: Player/Shoot[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2586b4c8-3171-4c91-a9b5-af58027a9530
+    m_ActionName: Player/Dash[/Keyboard/space,/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a80c56de-ece6-41f0-a955-dd19b07b6cd1
+    m_ActionName: Player/Extraction[/Keyboard/x]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2236252746224153508}
+        m_TargetAssemblyTypeName: Player.Shotgun, Assembly-CSharp
+        m_MethodName: OnIndicateReload
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 0e8d3fe6-3375-4d6d-a9d1-775ffedfa9fc
+    m_ActionName: Player/Reload[/Keyboard/r]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
