@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DamageSystem;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
 
 namespace Player {
@@ -169,6 +170,13 @@ namespace Player {
       if (find) find.TryGetComponent(out cursorManager); // UI ammo display
       find = GameObject.Find("Player Camera Follow");
       if (find) find.TryGetComponent(out playerCamEff); // Player camera effects
+    }
+
+    public void OnIndicateReload(InputAction.CallbackContext ctx) {
+      ammo = 0;
+      cursorManager.onShoot(ammo);
+      lastReload = Time.time;
+      StartCoroutine(DoReload());
     }
   }
 }
