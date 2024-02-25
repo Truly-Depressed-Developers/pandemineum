@@ -114,8 +114,24 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8104655390458677129, guid: 3681076607b73b249b056a35934de065, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8104655390458677129, guid: 3681076607b73b249b056a35934de065, type: 3}
       propertyPath: orthographic size
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8104655390458677129, guid: 3681076607b73b249b056a35934de065, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8104655390458677129, guid: 3681076607b73b249b056a35934de065, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8104655390458677129, guid: 3681076607b73b249b056a35934de065, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8885159030229947577, guid: 3681076607b73b249b056a35934de065, type: 3}
       propertyPath: m_Name
