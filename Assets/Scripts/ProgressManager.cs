@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Utils;
@@ -6,4 +6,5 @@ using Utils;
 public class ProgressManager : MonoSingleton<ProgressManager> {
   public int dayNumber = 1;
   public int cobaltHeld = 0;
+  public int cobalt_quota = 500;
 }

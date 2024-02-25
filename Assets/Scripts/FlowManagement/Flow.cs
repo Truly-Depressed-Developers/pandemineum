@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Diagnostics;
 using UnityEngine;
@@ -8,6 +8,7 @@ using Utils;
 namespace FlowManagement {
   public class Flow : MonoSingleton<Flow> {
     public IEnumerator LoadIntro1() {
+      Cursor.visible = false;
       yield return SceneFader.I.FadeAndLoadScene(SceneFader.FadeDirection.In);
       
       var mainMenu = SceneManager.UnloadSceneAsync("MainMenu");
@@ -20,6 +21,7 @@ namespace FlowManagement {
     }
 
     public IEnumerator LoadTheMineFake() {
+      Cursor.visible = false;
       yield return SceneFader.I.FadeAndLoadScene(SceneFader.FadeDirection.In);
       
       var intro = SceneManager.UnloadSceneAsync("Intro");
@@ -32,6 +34,7 @@ namespace FlowManagement {
     }
 
     public IEnumerator LoadIntro2() {
+      Cursor.visible = false;
       yield return SceneFader.I.FadeAndLoadScene(SceneFader.FadeDirection.In);
       
       var theMineFake = SceneManager.UnloadSceneAsync("TheMineFake");
@@ -44,6 +47,7 @@ namespace FlowManagement {
     }
 
     public IEnumerator LoadBuyCEO() {
+      Cursor.visible = true;
       yield return SceneFader.I.FadeAndLoadScene(SceneFader.FadeDirection.In);
       
       AsyncOperation intro2 = null;
@@ -58,7 +62,11 @@ namespace FlowManagement {
       }
       
       try {
+        int heldCobalt = Player.CobaltBag.I.CobaltCount;
+        int quota = ProgressManager.I.cobalt_quota;
+        ProgressManager.I.cobaltHeld += heldCobalt - quota;
         theMine = SceneManager.UnloadSceneAsync("TheMine");
+
       } catch { }
 
       if (theMine != null) {
@@ -72,6 +80,7 @@ namespace FlowManagement {
     }
 
     public IEnumerator LoadBuyPlayer() {
+      Cursor.visible = true;
       yield return SceneFader.I.FadeAndLoadScene(SceneFader.FadeDirection.In);
       
       var buyCEO = SceneManager.UnloadSceneAsync("BuyCEO");
@@ -84,6 +93,7 @@ namespace FlowManagement {
     }
 
     public IEnumerator LoadTheMine() {
+      Cursor.visible = false;
       yield return SceneFader.I.FadeAndLoadScene(SceneFader.FadeDirection.In);
       
       var buyPlayer = SceneManager.UnloadSceneAsync("BuyPlayer");
@@ -96,6 +106,7 @@ namespace FlowManagement {
     }
 
     public IEnumerator LoadLose() {
+      Cursor.visible = true;
       yield return SceneFader.I.FadeAndLoadScene(SceneFader.FadeDirection.In);
       
       var theMine = SceneManager.UnloadSceneAsync("TheMine");

@@ -6,18 +6,19 @@ using UnityEngine.Events;
 
 namespace Mine {
   public class Objective : MonoBehaviour {
-    [SerializeField] private int cobaltRequirement;
+    private int cobaltRequirement;
     [SerializeField] private TMP_Text counter_top;
     [SerializeField] private TMP_Text counter_bottom;
     public UnityEvent onThresholdCrossed;
 
     private void Start() {
+      cobaltRequirement = ProgressManager.I.cobalt_quota;
       CobaltBag.I.cobaltCountChanged.AddListener((newCount) => {
         UpdateCounterText(newCount);
-        
-        if(newCount >= cobaltRequirement) onThresholdCrossed.Invoke();
+
+        if (newCount >= cobaltRequirement) onThresholdCrossed.Invoke();
       });
-      
+
       UpdateCounterText(0);
     }
 

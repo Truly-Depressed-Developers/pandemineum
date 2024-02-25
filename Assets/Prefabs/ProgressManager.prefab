@@ -44,3 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57b6f9d32c709684d94e4cda703e68b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dayNumber: 1
+  cobaltHeld: 0
+  cobalt_quota: 500
