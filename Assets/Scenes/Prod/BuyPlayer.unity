@@ -419,6 +419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cg: {fileID: 1597111335}
+  buy_card_text: {fileID: 968811943}
 --- !u!4 &862589873
 Transform:
   m_ObjectHideFlags: 0
