@@ -19,7 +19,7 @@ public class Movement : MonoBehaviour {
 
   private bool inDashMove;
 
-  private Vector2 direction = new(0, 0);
+  [HideInInspector] public Vector2 direction = new(0, 0);
 
   [SerializeField] private Rigidbody2D rb;
 
