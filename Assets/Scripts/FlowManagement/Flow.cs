@@ -117,5 +117,13 @@ namespace FlowManagement {
       
       yield return SceneFader.I.FadeAndLoadScene(SceneFader.FadeDirection.Out);
     }
+
+    public IEnumerator LoadMenu() {
+      var loseScene = SceneManager.UnloadSceneAsync("Lose");
+      while (!loseScene.isDone) yield return null;
+
+      var menu = SceneManager.LoadSceneAsync("MainMenu");
+      while (!menu.isDone) yield return null;
+    }
   }
 }

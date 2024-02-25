@@ -20,6 +20,8 @@ public class Enemy : MonoBehaviour {
   [SerializeField] private UnityEvent on_jump_attack;
   [SerializeField] private UnityEvent on_agro;
 
+  private float ai_time_stupid = 2.25f;
+
   private bool canJump = true;
   private bool detected = false;
 
@@ -51,8 +53,9 @@ public class Enemy : MonoBehaviour {
 
   private void FixedUpdate() {
     isRunning = false;
-
-    if (!player) return;
+    if (ai_time_stupid > 0f)
+      ai_time_stupid -= Time.fixedDeltaTime;
+    if (!player || ai_time_stupid > 0f) return;
     float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
     if (distanceToPlayer <= detectionRange && !isJumping) {
