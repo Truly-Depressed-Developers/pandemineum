@@ -155,7 +155,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 754436503}
+  - {fileID: 771408850}
+  - {fileID: 1474858016}
   - {fileID: 1792271702}
+  - {fileID: 927777394}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -408,15 +411,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 771408850}
-  - {fileID: 1474858016}
+  m_Children: []
   m_Father: {fileID: 141910677}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_SizeDelta: {x: 2112, y: 1188}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &754436504
 MonoBehaviour:
@@ -438,7 +439,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ef9acff1ce98a4b4baabbdeaa905c5e7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 11df97fab4c0c0f49abdab19b88a6bd7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -516,8 +517,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "z powodu smierci czlowieka, firma pad\u0142a ofiara duzej krytyki ze strony
-    spoleczenstwa"
+  m_text: "Z powodu \u015Bmierci cz\u0142owieka, firma pad\u0142a ofiar\u0105 du\u017Cej
+    krytyki ze strony spo\u0142ecze\u0144stwa..."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dcb7558a8455ab5458dd597ddca43fb8, type: 2}
   m_sharedMaterial: {fileID: -3839664536591387896, guid: dcb7558a8455ab5458dd597ddca43fb8, type: 2}
@@ -601,12 +602,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 771408847}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 754436503}
+  m_Father: {fileID: 141910677}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -660,12 +661,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 927777393}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1792271702}
+  m_Father: {fileID: 141910677}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -692,7 +693,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "...ku uciesze publicznosci zajmujesz miejsce zmar\u0142ego wi\u0119\u017Ania"
+  m_text: "...ku uciesze publiczno\u015Bci zajmujesz miejsce zmar\u0142ego wi\u0119\u017Ania"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dcb7558a8455ab5458dd597ddca43fb8, type: 2}
   m_sharedMaterial: {fileID: -3839664536591387896, guid: dcb7558a8455ab5458dd597ddca43fb8, type: 2}
@@ -816,12 +817,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1474858015}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 754436503}
+  m_Father: {fileID: 141910677}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -848,7 +849,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: zarzad uciekl od odpowiedzialnosci, a cala wine zrucil na ciebie...
+  m_text: "...zarz\u0105d uciek\u0142 od odpowiedzialno\u015Bci, a ca\u0142\u0105
+    win\u0119 zrzuci\u0142 na ciebie..."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dcb7558a8455ab5458dd597ddca43fb8, type: 2}
   m_sharedMaterial: {fileID: -3839664536591387896, guid: dcb7558a8455ab5458dd597ddca43fb8, type: 2}
@@ -976,14 +978,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 927777394}
+  m_Children: []
   m_Father: {fileID: 141910677}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_SizeDelta: {x: 2112, y: 1188}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1792271703
 MonoBehaviour:
@@ -1005,7 +1006,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ee0b9e7484ba12e47a3693873eb10ec5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4ffc5261be814d140bb21f5b013ad9c2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
