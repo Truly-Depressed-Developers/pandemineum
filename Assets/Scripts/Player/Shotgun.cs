@@ -12,14 +12,15 @@ namespace Player {
 
     [SerializeField] private float spread;
     [SerializeField] private int pellets;
-    [SerializeField] private float range;
+    [SerializeField] public float range;
+    [SerializeField] public float damage = 20f;
     [SerializeField] private int clipSize;
-    [SerializeField] private float damage = 20f;
 
     [SerializeField] private float shotCooldown;
-    [SerializeField] private float reloadTime;
+    [SerializeField] public float reloadTime;
 
     [SerializeField] private LayerMask hitColliderLayers;
+    [SerializeField] private AudioClip shotgun_sound;
 
     private CursorManager cursorManager;
     private PlayerCameraEffects playerCamEff;
@@ -85,8 +86,8 @@ namespace Player {
 
       for (int i = 0; i < pellets; i++) {
         float randomAngle = Random.Range(-spread, spread);
-        var randomDir = (Quaternion.AngleAxis(randomAngle, transform.forward) * shotgunDir).normalized;
-        var pelletPoint = tip.position + randomDir * range;
+        var randomDir = (Quaternion.AngleAxis(randomAngle, transform.forward) * shotgunDir).normalized * Mathf.Sign(transform.parent.transform.localScale.x);
+        var pelletPoint = tip.position + randomDir * range ;
 
         Vector3[] arr = { tip.position, pelletPoint };
         var lri = Instantiate(lineRendererInstance);
@@ -114,6 +115,7 @@ namespace Player {
       }
 
       lastShot = Time.time;
+      AudioSource.PlayClipAtPoint(shotgun_sound, transform.position, 1.5f);
     }
 
     private IEnumerator DoReload() {
@@ -135,7 +137,7 @@ namespace Player {
       if (!lrf || !lr) return;
 
       lrf.points = points;
-      lrf.fadeOutTime = 0.5f;
+      lrf.fadeOutTime = 0.3f;
 
       lr.startWidth = 0.05f;
       lr.endWidth = 0.05f;

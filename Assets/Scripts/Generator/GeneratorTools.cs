@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -6,8 +6,9 @@ using UnityEngine.Tilemaps;
 namespace Generator {
   public class GeneratorTools : MonoBehaviour {
     public Tilemap GroundTilemap;
-    public Tile ground_tile;
+    public Tile[] ground_tiles;
     public System.Random level_gen = null;
+    [SerializeField] private LayerMask block_spawn_layer;
 
     public void GenerateSphere(int radious, Vector2Int sph_pos) {
       Vector2Int new_pos = new Vector2Int(0, 0);
@@ -15,7 +16,7 @@ namespace Generator {
         for (int y = -radious; y < radious; y++) {
           new_pos = new Vector2Int(x + sph_pos.x, y + sph_pos.y);
           if (Vector2Int.Distance(sph_pos, new_pos) < radious - 0.5f)
-            GroundTilemap.SetTile(new Vector3Int(new_pos.x, new_pos.y, 0), ground_tile);
+            GroundTilemap.SetTile(new Vector3Int(new_pos.x, new_pos.y, 0), pick_ground_tile());
         }
       }
     }
@@ -86,12 +87,94 @@ namespace Generator {
       return seed;
     }
 
+    public string generate_seed_from_gen(System.Random gen) {
+      string seed = "";
+      for (int i = 0; i < 16; i++) {
+        switch (gen.Next(0, 3)) {
+          case 0:
+            seed += gen.Next('a', 'z');
+            break;
+          case 1:
+            seed += gen.Next('A', 'Z');
+            break;
+          case 2:
+            seed += gen.Next('0', '9');
+            break;
+        }
+      }
+
+      return seed;
+    }
+
+    public List<Vector2Int> get_average_tile_positions() {
+      List<Vector2Int> tile_positions = new List<Vector2Int>(0);
+      Bounds map_bounds = GroundTilemap.localBounds;
+      for(int y = (int)-map_bounds.extents.y; y < (int)map_bounds.extents.y; y+=4) {
+        for(int x = (int)-map_bounds.extents.x; x < (int)map_bounds.extents.x; x+=4) {
+          if(GroundTilemap.HasTile(new Vector3Int((int)map_bounds.center.x + x, (int)map_bounds.center.y + y)))
+            tile_positions.Add(new Vector2Int((int)map_bounds.center.x + x, (int)map_bounds.center.y + y));
+        }
+      }
+      return tile_positions;
+    }
+
     private float correct_angle(float angle) {
       while (angle > 360)
         angle -= 360;
       while (angle < 0)
         angle += 360;
       return angle;
+    }
+
+    public void clear_map() {
+      GroundTilemap.ClearAllTiles();
+    }
+
+    private Tile pick_ground_tile() {
+      return ground_tiles[level_gen.Next(0, ground_tiles.Length)];
+    }
+
+    public bool check_position_valid(Vector2 pos) {
+      if (!GroundTilemap.HasTile(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y),0)))
+        return false;
+      if (!GroundTilemap.HasTile(new Vector3Int(Mathf.RoundToInt(pos.x + 0.5f), Mathf.RoundToInt(pos.y),0)))
+        return false;
+      if (!GroundTilemap.HasTile(new Vector3Int(Mathf.RoundToInt(pos.x - 0.5f), Mathf.RoundToInt(pos.y),0)))
+        return false;
+      if (!GroundTilemap.HasTile(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y + 0.5f),0)))
+        return false;
+      if (!GroundTilemap.HasTile(new Vector3Int(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y - 0.5f),0)))
+        return false;
+      return true;
+    }
+
+    public bool collision_check(Vector2 pos, Vector2[] other_pos, float collision_dist, int array_size = -1) {
+
+      if (!check_position_valid(pos))
+        return true;
+
+      if (Physics2D.OverlapCircle(pos, 0.5f, block_spawn_layer))
+        return true;
+
+      if (array_size == -1)
+        array_size = other_pos.Length;
+
+      for (int i = 0; i < array_size; i++) { // colliding
+        if (other_pos[i] == null)
+          return false;
+        if (Vector2.Distance(pos, other_pos[i]) <= collision_dist)
+          return true;
+      }
+      return false;
+    }
+
+    public System.Random make_gen(string new_seed) {
+      System.Random gen;
+      if (new_seed == "")
+        gen = new System.Random(generate_seed().GetHashCode());
+      else
+        gen = new System.Random(new_seed.GetHashCode());
+      return gen;
     }
   }
 }

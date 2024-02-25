@@ -1,25 +1,45 @@
 ﻿using System.Collections;
+using Cobalt;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour {
   private Transform player; 
   [SerializeField] private float detectionRange = 10f;
-  [SerializeField] private float movementSpeed = 5f;
+  [SerializeField] public float movementSpeed = 5f;
   [SerializeField] private float jumpForce = 50f;
   [SerializeField] private float jumpCooldown = 2f;
   [SerializeField] private float jumpFreezeTime = 1f;
-  [SerializeField] private float minJumpDistance = 2f;
+  [SerializeField] public float minJumpDistance = 2f;
 
   [SerializeField] private float movementDirectionOuterAngle = 30f;
   [SerializeField] private float movementDirectionInnerAngle = 30f;
 
+  [SerializeField] private float cobaltDropChance;
+  [SerializeField] private float cobaltDropAmount;
+  [SerializeField] private GameObject chunkPrefab;
+
   private bool canJump = true;
-  private bool inJump = false;
 
   private Rigidbody2D rb;
 
+  public bool isRunning {
+    get; private set;
+  }
+  public bool isJumping {
+    get; private set;
+  }
+
+  public Vector2 MovementDirection {
+    get {
+      if(!player) return Vector2.zero;
+      else return (player.position - transform.position).normalized;
+    }
+  }
+
   private void Start() {
     rb = GetComponent<Rigidbody2D>();
+
+    isJumping = false;
 
     if (player == null) {
       player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -27,15 +47,15 @@ public class Enemy : MonoBehaviour {
   }
 
   private void FixedUpdate() {
+    isRunning = false;
+
     if (!player) return;
     float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-    if (distanceToPlayer <= detectionRange && !inJump) {
+    if (distanceToPlayer <= detectionRange && !isJumping) {
 
-      //LookAt(player);
-
+      isRunning = true;
       Move(player);
-
 
       if (distanceToPlayer <= minJumpDistance && canJump) {
 
@@ -44,19 +64,6 @@ public class Enemy : MonoBehaviour {
         StartCoroutine(JumpCooldown());
       }
     }
-  }
-
-  private void Update() {
-    
-  }
-
-  private void LookAt(Transform target) {
-    Vector3 direction = (target.position - transform.position).normalized;
-    direction.y = 0f;
-
-    Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, direction);
-    transform.rotation = targetRotation;
-
   }
 
   private void Move(Transform target) {
@@ -72,10 +79,19 @@ public class Enemy : MonoBehaviour {
 
   private IEnumerator JumpCooldown() {
     canJump = false;
-    inJump = true;
+    isJumping = true;
     yield return new WaitForSeconds(jumpFreezeTime);
-    inJump = false;
+    isJumping = false;
     yield return new WaitForSeconds(jumpCooldown);
     canJump = true;
+  }
+
+  public void OnDeath() {
+    if (Random.value > cobaltDropChance) return;
+
+    var chunkGO = Instantiate(chunkPrefab, transform.position, Quaternion.identity);
+    if(!chunkGO.TryGetComponent(out Chunk chunk));
+    
+    chunk.SetRichness(Mathf.FloorToInt(Random.Range(cobaltDropAmount * 0.8f, cobaltDropAmount * 1.2f)));
   }
 }

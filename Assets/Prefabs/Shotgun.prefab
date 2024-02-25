@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3238437867252738129}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Barrel end
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 89271121001240208}
   - component: {fileID: 2236252746224153508}
   - component: {fileID: 9196422923291117361}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Shotgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8028292883001048627}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
@@ -86,7 +86,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -135,12 +135,14 @@ MonoBehaviour:
   spread: 15
   pellets: 4
   range: 7
+  damage: 20
   clipSize: 6
   shotCooldown: 0.3
   reloadTime: 1.2
   hitColliderLayers:
     serializedVersion: 2
     m_Bits: 768
+  shotgun_sound: {fileID: 8300000, guid: 0f79f1a7df616af4d8374985046c2e1e, type: 3}
 --- !u!120 &9196422923291117361
 LineRenderer:
   serializedVersion: 2

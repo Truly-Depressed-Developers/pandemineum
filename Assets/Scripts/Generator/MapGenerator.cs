@@ -1,44 +1,26 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Generator {
   public class MapGenerator : MonoBehaviour {
-    public string seed = "";
+    [HideInInspector] public bool done_generating = false;
     public GeneratorTools gen_tools;
-    public CaveGenStats CaveProfile;
+    [HideInInspector] public CaveGenStats cave_profile;
 
-    private System.Random gen;
+    private Coroutine current_gen;
+    public System.Random gen;
 
-    private void Start() {
-      //make_gen();
-      //SimpleCaveGenerator();
-      StartCoroutine(gen_tester());
-    }
+    [HideInInspector] public List<Vector2> cavern_position = new List<Vector2>(0);
 
-    IEnumerator gen_tester() {
-      if (CaveProfile == null)
-        yield break;
-
-      seed = "";
-      float avg_size;
-      Bounds tile_b;
-      while (true) {
-        gen_tools.GroundTilemap.ClearAllTiles();
-        make_gen();
-        SimpleCaveGenerator();
-        tile_b = gen_tools.GroundTilemap.localBounds;
-        avg_size = (tile_b.extents.x + tile_b.extents.y) / 2f;
-        if (avg_size < CaveProfile.MinAverage || avg_size > CaveProfile.MaxAverage)
-          yield return null;
-        else
-          yield return new WaitForSeconds(1);
-      }
+    public void BeginGeneration() {
+      done_generating = false;
+      current_gen = StartCoroutine(generate_layout());
     }
 
     private void SimpleCaveGenerator() {
-      int tunnels = gen.Next(CaveProfile.MinTunnels, CaveProfile.MaxTunnels);
-      int caverns = CaveProfile.Caverns;
+      int tunnels = gen.Next(cave_profile.MinTunnels, cave_profile.MaxTunnels);
+      int caverns = cave_profile.Caverns;
 
       Vector2 dir_to_zero;
       List<Vector3Int> joints = new List<Vector3Int>(0);
@@ -47,8 +29,8 @@ namespace Generator {
       int id;
       // snakes
       do {
-        joints.AddRange(gen_tools.GenerateSnake(gen.Next(CaveProfile.MinSnakeLength,
-          CaveProfile.MaxSnakeLength), pos, angle));
+        joints.AddRange(gen_tools.GenerateSnake(gen.Next(cave_profile.MinSnakeLength,
+          cave_profile.MaxSnakeLength), pos, angle));
         id = gen.Next(0, joints.Count);
         pos = new Vector2Int(joints[id].x, joints[id].y);
         if (gen.Next(0, 2) == 1)
@@ -68,21 +50,60 @@ namespace Generator {
       // caverns
       while (caverns > 0 && joint_amount > 0) {
         id = gen.Next(0, joint_amount);
-        gen_tools.GenerateSphere(gen.Next(CaveProfile.MinCavernSize, CaveProfile.MaxCavernSize)
+        gen_tools.GenerateSphere(gen.Next(cave_profile.MinCavernSize, cave_profile.MaxCavernSize)
           , new Vector2Int(joints[id].x, joints[id].y));
+        cavern_position.Add(new Vector2(joints[id].x, joints[id].y));
         joints.RemoveAt(id);
         caverns--;
         joint_amount--;
       }
     }
 
-    // creates rn-gen instance
-    private void make_gen() {
-      if (seed == "")
-        gen = new System.Random(gen_tools.generate_seed().GetHashCode());
-      else
-        gen = new System.Random(seed.GetHashCode());
-      gen_tools.level_gen = gen;
+
+
+    //  GENERATOR BEHAVIOUR
+    public IEnumerator generate_layout() {
+      // check if cave profile exists
+      if (cave_profile == null) {
+        Debug.LogWarning("generation canceled : reason - no cave profile provided");
+        current_gen = null;
+        yield break;
+      }
+
+      // generating layout
+      while (true) { 
+        gen_tools.clear_map();
+        cavern_position.Clear();
+        gen_tools.GenerateSphere(4, Vector2Int.zero);
+        SimpleCaveGenerator();
+        yield return null;
+
+        if (is_generation_correct())
+          break;
+        else
+          gen = gen_tools.make_gen(gen_tools.generate_seed_from_gen(gen));
+      }
+
+      current_gen = null;
+      done_generating = true;
+      yield break;
+    }
+
+
+
+    //  GENERATING SYSTEMS AND LOGIC
+
+    private float calculate_average() {
+      Bounds tile_b;
+      tile_b = gen_tools.GroundTilemap.localBounds;
+      return (tile_b.extents.x + tile_b.extents.y) / 2f;
+    }
+
+    private bool is_generation_correct() {
+      float avg = calculate_average();
+      if (avg < cave_profile.MinAverage || avg > cave_profile.MaxAverage)
+        return false;
+      return true;
     }
   }
 }
