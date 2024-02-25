@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using FlowManagement;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,18 +11,10 @@ public class ExtractionZone : MonoBehaviour {
   [SerializeField] private TMP_Text noAccessTxt;
 
   private bool objectiveCompleted = false;
+  private bool hasEscaped = false;
 
   public void changeObjectiveStatus(bool status) {
     objectiveCompleted = status;
-  }
-
-  void Start() {
-
-  }
-
-  // Update is called once per frame
-  void Update() {
-
   }
 
   private void OnTriggerEnter2D(Collider2D collision) {
@@ -42,8 +35,9 @@ public class ExtractionZone : MonoBehaviour {
   }
 
   public void onIndicateExit(InputAction.CallbackContext ctx) {
-    if (objectiveCompleted) {
-      SceneManager.LoadScene("Cards");
+    if (objectiveCompleted && !hasEscaped) {
+      hasEscaped = true;
+      Flow.I.StartCoroutine(Flow.I.LoadBuyCEO());
     }
   }
 }

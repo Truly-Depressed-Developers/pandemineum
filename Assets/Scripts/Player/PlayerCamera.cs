@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Statistics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,6 +13,10 @@ namespace Player {
     private float max_lookout_dist = 7f;
     private Vector2 wishcamera_pos;
     private Vector2 mouse_pos, world_m_pos, outlook_dir;
+
+    private void Start() {
+      max_lookout_dist *= StatisticsRepo.I.PlayerSightRangeMul;
+    }
 
     private void Update() {
       CalculateCameraWishPosition();
