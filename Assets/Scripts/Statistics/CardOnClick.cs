@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
-public class CardOnClick : MonoBehaviour
-{
+namespace Statistics {
+  public class CardOnClick : MonoBehaviour {
     public void Click() {
-         Debug.Log("You have clicked the button!");
+      Debug.Log("You have clicked the button!");
     }
+  }
 }

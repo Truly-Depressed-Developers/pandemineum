@@ -1,7 +1,6 @@
-using UnityEngine;
-
-public enum BuffType
-{
+namespace Statistics {
+  public enum BuffType {
     Buff,
     Debuff,
+  }
 }

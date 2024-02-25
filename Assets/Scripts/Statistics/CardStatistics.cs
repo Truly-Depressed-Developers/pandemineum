@@ -1,226 +1,220 @@
 ﻿using System;
 using UnityEngine;
 
-[CreateAssetMenu]
-public class CardStatistics : ScriptableObject {
-  // Chosen statistic
-  public EntityType entityType;
-  public PlayerStatistics playerStatistic;
-  public EnemyStatistics enemyStatistic;
-  public BuffType buffType;
-  public int value;
-  //player Tresholds
+namespace Statistics {
+  public class CardStatistics : ScriptableObject {
+    public PlayerStatistics playerStatistic;
+    public EnemyStatistics enemyStatistic;
+    public EntityType entityType;
+    public BuffType buffType;
+    public float value;
+    public Sprite sprite;
 
-  private int playerHealthThreshhold = 5;
-  private int playerArmorThreshhold = 5;
-  private int playerDamageThreshhold = 5;
-  private int playerSpeedThreshhold = 5;
-  private int playerReloadSpeedThreshhold = 5;
-  private int playerShotRangeThreshhold = 5;
-  private int playerSightRangeThreshhold = 5;
-  private int playerLuckThreshhold = 5;
-  private int playerCobaltPickRateThreshhold = 5;
-  //Enemies Tresholds
-  private int enemyHealthThreshhold = 5;
-  private int enemyArmorThreshhold = 5;
-  private int enemyDamageThreshhold = 5;
-  private int enemySpeedThreshhold = 5;
-  private int enemyDropRateThreshhold = 5;
-  private int enemyShotRangeThreshhold = 5;
-  // Operational variables
-  private float probability = 0.5f;
-  // Images
-  public Sprite sprite = null;
+    // Structure: (buffMin, buffMax, debuffMin, debuffMax)
+    // Player 
+    private readonly Vector4 playerHealthBounds = new(15, 25, 20, 40);
+    private readonly Vector4 playerArmorBounds = new(5, 15, 5, 15); // base 0
+    private readonly Vector4 playerDamageBounds = new(2, 5, 3, 6); // base 10
+    private readonly Vector4 playerSpeedBounds = new(10, 20, 15, 30);
+    private readonly Vector4 playerReloadSpeedBounds = new(15, 25, 20, 35);
+    private readonly Vector4 playerShotRangeBounds = new(10, 25, 15, 30);
+    private readonly Vector4 playerSightRangeBounds = new(10, 20, 15, 30);
+    private readonly Vector4 playerLuckBounds = new(10, 20, 10, 20);
+    private readonly Vector4 playerCobaltPickRateBounds = new(10, 20, 15, 30);
 
-  void OnEnable() {
-    this.drawStatistics();
-  }
+    // Enemy
+    private readonly Vector4 enemyHealthBounds = new(15, 25, 25, 40);
+    private readonly Vector4 enemyArmorBounds = new(2, 4, 15, 35); // base 0
+    private readonly Vector4 enemyDamageBounds = new(10, 20, 20, 40); // base 15
+    private readonly Vector4 enemySpeedBounds = new(5, 15, 15, 25);
+    private readonly Vector4 enemyDropRateBounds = new(10, 25, 20, 45);
+    private readonly Vector4 enemyShotRangeBounds = new(10, 25, 20, 40);
 
-  //private void loadBackupImage() {
-  //  this.sprite = (Sprite)Resources.Load("Cards/good_card", typeof(Sprite));
-  //}
+    private Sprite LoadSprite(string path) {
+      return (Sprite)Resources.Load("Cards/" + path, typeof(Sprite));
+    }
 
-  private Sprite loadSprite(string name) {
-    return (Sprite)Resources.Load("Cards/" + name, typeof(Sprite));
-  }
+    public void Randomize(BuffType flavour) {
+      // Entity type
+      entityType = UnityEngine.Random.value <= 0.5f ? EntityType.Player : EntityType.Enemy;
 
-  private void drawStatistics() {
-    // Entity type
-    this.entityType = UnityEngine.Random.value <= this.probability ? EntityType.Player : EntityType.Enemy;
+      // Statistic
+      PlayerStatistics[] allValues = (PlayerStatistics[])Enum.GetValues(typeof(PlayerStatistics));
+      playerStatistic = allValues[UnityEngine.Random.Range(0, allValues.Length)];
 
-    // Statistic
-    PlayerStatistics[] allValues = (PlayerStatistics[])Enum.GetValues(typeof(PlayerStatistics));
-    this.playerStatistic = allValues[UnityEngine.Random.Range(0, allValues.Length)];
+      EnemyStatistics[] allEnemyValues = (EnemyStatistics[])Enum.GetValues(typeof(EnemyStatistics));
+      enemyStatistic = allEnemyValues[UnityEngine.Random.Range(0, allEnemyValues.Length)];
 
-    EnemyStatistics[] allEnemyValues = (EnemyStatistics[])Enum.GetValues(typeof(EnemyStatistics));
-    this.enemyStatistic = allEnemyValues[UnityEngine.Random.Range(0, allEnemyValues.Length)];
+      buffType = flavour;
 
-    // Buff or debuff
-    this.buffType = UnityEngine.Random.value <= this.probability ? BuffType.Buff : BuffType.Debuff;
-
-    // Value of the buff or debuff
-    if (this.entityType == EntityType.Player) {
-      if (this.buffType == BuffType.Buff) {
-        switch (this.playerStatistic) {
-          case PlayerStatistics.Health: {
-              this.value = UnityEngine.Random.Range(1, this.playerHealthThreshhold);
-              this.sprite = this.loadSprite("player_health");
+      // Value of the buff or debuff
+      if (entityType == EntityType.Player) {
+        if (buffType == BuffType.Buff) {
+          switch (playerStatistic) {
+            case PlayerStatistics.Health: {
+              value = UnityEngine.Random.Range(playerHealthBounds.x, playerHealthBounds.y);
+              sprite = LoadSprite("player_health");
               break;
-            };
-          case PlayerStatistics.Armor: {
-              this.value = UnityEngine.Random.Range(1, this.playerArmorThreshhold);
-              this.sprite = this.loadSprite("player_armor");
+            }
+            case PlayerStatistics.Armor: {
+              value = UnityEngine.Random.Range(playerArmorBounds.x, playerArmorBounds.y);
+              sprite = LoadSprite("player_armor");
               break;
-            };
-          case PlayerStatistics.Damage: {
-              this.value = UnityEngine.Random.Range(1, this.playerDamageThreshhold);
-              this.sprite = this.loadSprite("player_damage");
+            }
+            case PlayerStatistics.Damage: {
+              value = UnityEngine.Random.Range(playerDamageBounds.x, playerDamageBounds.y);
+              sprite = LoadSprite("player_damage");
               break;
-            };
-          case PlayerStatistics.Speed: {
-              this.value = UnityEngine.Random.Range(1, this.playerSpeedThreshhold);
-              this.sprite = this.loadSprite("player_speed");
+            }
+            case PlayerStatistics.Speed: {
+              value = UnityEngine.Random.Range(playerSpeedBounds.x, playerSpeedBounds.y);
+              sprite = LoadSprite("player_speed");
               break;
-            };
-          case PlayerStatistics.ReloadSpeed: {
-              this.value = -UnityEngine.Random.Range(1, this.playerReloadSpeedThreshhold);
-              this.sprite = this.loadSprite("player_reload_speed");
+            }
+            case PlayerStatistics.ReloadSpeed: {
+              value = -UnityEngine.Random.Range(playerReloadSpeedBounds.x, playerReloadSpeedBounds.y);
+              sprite = LoadSprite("player_reload_speed");
               break;
-            };
-          case PlayerStatistics.ShotRange: {
-              this.value = UnityEngine.Random.Range(1, this.playerShotRangeThreshhold);
-              this.sprite = this.loadSprite("player_shot_range");
+            }
+            case PlayerStatistics.ShotRange: {
+              value = UnityEngine.Random.Range(playerShotRangeBounds.x, playerShotRangeBounds.y);
+              sprite = LoadSprite("player_shot_range");
               break;
-            };
-          case PlayerStatistics.SightRange: {
-              this.value = UnityEngine.Random.Range(1, this.playerSightRangeThreshhold);
-              this.sprite = this.loadSprite("player_sight_range");
+            }
+            case PlayerStatistics.SightRange: {
+              value = UnityEngine.Random.Range(playerSightRangeBounds.x, playerSightRangeBounds.y);
+              sprite = LoadSprite("player_sight_range");
               break;
-            };
-          case PlayerStatistics.Luck: {
-              this.value = UnityEngine.Random.Range(1, this.playerLuckThreshhold);
-              this.sprite = this.loadSprite("player_card");
+            }
+            case PlayerStatistics.Luck: {
+              value = UnityEngine.Random.Range(playerLuckBounds.x, playerLuckBounds.y);
+              sprite = LoadSprite("player_card");
               break;
-            };
-          case PlayerStatistics.CobaltPickRate: {
-              this.value = UnityEngine.Random.Range(1, this.playerCobaltPickRateThreshhold);
-              this.sprite = this.loadSprite("player_cobalt_pick_rate");
+            }
+            case PlayerStatistics.CobaltPickRate: {
+              value = UnityEngine.Random.Range(playerCobaltPickRateBounds.x, playerCobaltPickRateBounds.y);
+              sprite = LoadSprite("player_cobalt_pick_rate");
               break;
-            };
+            }
+          }
+        } else {
+          switch (playerStatistic) {
+            case PlayerStatistics.Health: {
+             value = -UnityEngine.Random.Range(playerHealthBounds.z, playerHealthBounds.w);
+             sprite = LoadSprite("player_health");
+              break;
+            }
+            case PlayerStatistics.Armor: {
+              value = -UnityEngine.Random.Range(playerArmorBounds.z, playerArmorBounds.w);
+              sprite = LoadSprite("player_armor");
+              break;
+            }
+            case PlayerStatistics.Damage: {
+              value = -UnityEngine.Random.Range(playerDamageBounds.z, playerDamageBounds.w);
+              sprite = LoadSprite("player_damage");
+              break;
+            }
+            case PlayerStatistics.Speed: {
+              value = -UnityEngine.Random.Range(playerSpeedBounds.z, playerSpeedBounds.w);
+              sprite = LoadSprite("player_speed");
+              break;
+            }
+            case PlayerStatistics.ReloadSpeed: {
+              value = UnityEngine.Random.Range(playerReloadSpeedBounds.z, playerReloadSpeedBounds.w);
+              sprite = LoadSprite("player_reload_speed");
+              break;
+            }
+            case PlayerStatistics.ShotRange: {
+              value = -UnityEngine.Random.Range(playerShotRangeBounds.z, playerShotRangeBounds.w);
+              sprite = LoadSprite("player_shot_range");
+              break;
+            }
+            case PlayerStatistics.SightRange: {
+              value = -UnityEngine.Random.Range(playerSightRangeBounds.z, playerSightRangeBounds.w);
+              sprite = LoadSprite("player_sight_range");
+              break;
+            }
+            case PlayerStatistics.Luck: {
+              value = -UnityEngine.Random.Range(playerLuckBounds.z, playerLuckBounds.w);
+              sprite = LoadSprite("player_card");
+              break;
+            }
+            case PlayerStatistics.CobaltPickRate: {
+              value = -UnityEngine.Random.Range(playerCobaltPickRateBounds.z, playerCobaltPickRateBounds.w);
+              sprite = LoadSprite("player_cobalt_pick_rate");
+              break;
+            }
+          }
         }
       } else {
-        switch (this.playerStatistic) {
-          case PlayerStatistics.Health: {
-              this.value = -UnityEngine.Random.Range(1, this.playerHealthThreshhold);
-              this.sprite = this.loadSprite("player_health");
+        if (buffType == BuffType.Buff) {
+          switch (enemyStatistic) {
+            case EnemyStatistics.Health: {
+              value = -UnityEngine.Random.Range(enemyHealthBounds.x, enemyHealthBounds.y);
+              sprite = LoadSprite("enemy_health");
               break;
-            };
-          case PlayerStatistics.Armor: {
-              this.value = -UnityEngine.Random.Range(1, this.playerArmorThreshhold);
-              this.sprite = this.loadSprite("player_armor");
+            }
+            case EnemyStatistics.Armor: {
+              value = -UnityEngine.Random.Range(enemyArmorBounds.x, enemyArmorBounds.y);
+              sprite = LoadSprite("enemy_armor");
               break;
-            };
-          case PlayerStatistics.Damage: {
-              this.value = -UnityEngine.Random.Range(1, this.playerDamageThreshhold);
-              this.sprite = this.loadSprite("player_damage");
+            }
+            case EnemyStatistics.Damage: {
+              value = -UnityEngine.Random.Range(enemyDamageBounds.x, enemyDamageBounds.y);
+              sprite = LoadSprite("enemy_damage");
               break;
-            };
-          case PlayerStatistics.Speed: {
-              this.value = -UnityEngine.Random.Range(1, this.playerSpeedThreshhold);
-              this.sprite = this.loadSprite("player_speed");
+            }
+            case EnemyStatistics.Speed: {
+              value = -UnityEngine.Random.Range(enemySpeedBounds.x, enemySpeedBounds.y);
+              sprite = LoadSprite("enemy_speed");
               break;
-            };
-          case PlayerStatistics.ReloadSpeed: {
-              this.value = UnityEngine.Random.Range(1, this.playerReloadSpeedThreshhold);
-              this.sprite = this.loadSprite("player_reload_speed");
+            }
+            case EnemyStatistics.ShotRange: {
+              value = -UnityEngine.Random.Range(enemyShotRangeBounds.x, enemyShotRangeBounds.y);
+              sprite = LoadSprite("enemy_card");
               break;
-            };
-          case PlayerStatistics.ShotRange: {
-              this.value = -UnityEngine.Random.Range(1, this.playerShotRangeThreshhold);
-              this.sprite = this.loadSprite("player_shot_range");
+            }
+            case EnemyStatistics.DropRate: {
+              value = UnityEngine.Random.Range(enemyDropRateBounds.x, enemyDropRateBounds.y);
+              sprite = LoadSprite("enemy_droprate");
               break;
-            };
-          case PlayerStatistics.SightRange: {
-              this.value = -UnityEngine.Random.Range(1, this.playerSightRangeThreshhold);
-              this.sprite = this.loadSprite("player_sight_range");
+            }
+          }
+        } else {
+          switch (enemyStatistic) {
+            case EnemyStatistics.Health: {
+              value = UnityEngine.Random.Range(enemyHealthBounds.z, enemyHealthBounds.w);
+              sprite = LoadSprite("enemy_health");
               break;
-            };
-          case PlayerStatistics.Luck: {
-              this.value = -UnityEngine.Random.Range(1, this.playerLuckThreshhold);
-              this.sprite = this.loadSprite("player_card");
+            }
+            case EnemyStatistics.Armor: {
+              value = UnityEngine.Random.Range(enemyArmorBounds.z, enemyArmorBounds.w);
+              sprite = LoadSprite("enemy_armor");
               break;
-            };
-        }
-      }
-    } else {
-      if (this.buffType == BuffType.Buff) {
-        switch (this.enemyStatistic) {
-          case EnemyStatistics.Health: {
-              this.value = -UnityEngine.Random.Range(1, this.enemyHealthThreshhold);
-              this.sprite = this.loadSprite("enemy_health");
+            }
+            case EnemyStatistics.Damage: {
+              value = UnityEngine.Random.Range(enemyDamageBounds.z, enemyDamageBounds.w);
+              sprite = LoadSprite("enemy_damage");
               break;
-            };
-          case EnemyStatistics.Armor: {
-              this.value = -UnityEngine.Random.Range(1, this.enemyArmorThreshhold);
-              this.sprite = this.loadSprite("enemy_armor");
+            }
+            case EnemyStatistics.Speed: {
+              value = UnityEngine.Random.Range(enemySpeedBounds.z, enemySpeedBounds.w);
+              sprite = LoadSprite("enemy_speed");
               break;
-            };
-          case EnemyStatistics.Damage: {
-              this.value = -UnityEngine.Random.Range(1, this.enemyDamageThreshhold);
-              this.sprite = this.loadSprite("enemy_damage");
+            }
+            case EnemyStatistics.ShotRange: {
+              value = UnityEngine.Random.Range(enemyShotRangeBounds.z, enemyShotRangeBounds.w);
+              sprite = LoadSprite("enemy_card");
               break;
-            };
-          case EnemyStatistics.Speed: {
-              this.value = -UnityEngine.Random.Range(1, this.enemySpeedThreshhold);
-              this.sprite = this.loadSprite("enemy_speed");
+            }
+            case EnemyStatistics.DropRate: {
+              value = -UnityEngine.Random.Range(enemyDropRateBounds.z, enemyDropRateBounds.w);
+              sprite = LoadSprite("enemy_droprate");
               break;
-            };
-          case EnemyStatistics.ShotRange: {
-              this.value = -UnityEngine.Random.Range(1, this.enemyShotRangeThreshhold);
-              this.sprite = this.loadSprite("enemy_card");
-              break;
-            };
-          case EnemyStatistics.DropRate: {
-              this.value = UnityEngine.Random.Range(1, this.enemyDropRateThreshhold);
-              this.sprite = this.loadSprite("enemy_droprate");
-              break;
-            };
-        }
-      } else {
-        switch (this.enemyStatistic) {
-          case EnemyStatistics.Health: {
-              this.value = UnityEngine.Random.Range(1, this.enemyHealthThreshhold);
-              this.sprite = this.loadSprite("enemy_health");
-              break;
-            };
-          case EnemyStatistics.Armor: {
-              this.value = UnityEngine.Random.Range(1, this.enemyArmorThreshhold);
-              this.sprite = this.loadSprite("enemy_armor");
-              break;
-            };
-          case EnemyStatistics.Damage: {
-              this.value = UnityEngine.Random.Range(1, this.enemyDamageThreshhold);
-              this.sprite = this.loadSprite("enemy_damage");
-              break;
-            };
-          case EnemyStatistics.Speed: {
-              this.value = UnityEngine.Random.Range(1, this.enemySpeedThreshhold);
-              this.sprite = this.loadSprite("enemy_speed");
-              break;
-            };
-          case EnemyStatistics.ShotRange: {
-              this.value = UnityEngine.Random.Range(1, this.enemyShotRangeThreshhold);
-              this.sprite = this.loadSprite("enemy_card");
-              break;
-            };
-          case EnemyStatistics.DropRate: {
-              this.value = -UnityEngine.Random.Range(1, this.enemyDropRateThreshhold);
-              this.sprite = this.loadSprite("enemy_droprate");
-              break;
-            };
+            }
+          }
         }
       }
     }
-    Debug.Log(this.sprite);
   }
 }

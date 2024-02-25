@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 
-public enum EntityType
-{
+namespace Statistics {
+  public enum EntityType {
     Player,
     Enemy
+  }
 }

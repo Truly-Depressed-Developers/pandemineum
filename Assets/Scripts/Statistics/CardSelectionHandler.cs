@@ -1,161 +1,184 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
-public class CardSelectionHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler {
-  [SerializeField] private float verticalMoveAmount = 30f;
-  [SerializeField] private float moveTime = 0.1f;
-  [Range(0, 2f), SerializeField] private float scaleAmount = 1.05f;
+namespace Statistics {
+  public class CardSelectionHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler,
+    IDeselectHandler {
+    [SerializeField] private float verticalMoveAmount = 30f;
+    [SerializeField] private float moveTime = 0.1f;
+    [Range(0, 2f), SerializeField] private float scaleAmount = 1.05f;
+    [SerializeField] private CardStatisticDisplay csd;
+    
+    private CardStatistics statistics;
 
-  public CardStatistics statistics;
+    private Vector3 startPos;
+    private Vector3 startScale;
 
-  private Vector3 startPos;
-  private Vector3 startScale;
-
-  void Start() {
-    this.startPos = transform.position;
-    this.startScale = transform.localScale;
-  }
-
-  private IEnumerator animateCards(bool startingAnimation) {
-    Vector3 endPosition;
-    Vector3 endScale;
-
-    float elapsedTime = 0f;
-    while (elapsedTime < this.moveTime) {
-      // Increment timer
-      elapsedTime += Time.deltaTime;
-
-      // Assess move direction
-      if (startingAnimation) {
-        endPosition = this.startPos + new Vector3(0f, this.verticalMoveAmount, 0f);
-        endScale = this.startScale * this.scaleAmount;
-      } else {
-        endPosition = this.startPos;
-        endScale = this.startScale;
-      }
-
-      // Calculate the step
-      Vector3 lerpedPosition = Vector3.Lerp(transform.position, endPosition, (elapsedTime / moveTime));
-      Vector3 lerpedScale = Vector3.Lerp(transform.localScale, endScale, (elapsedTime / moveTime));
-
-      // Apply the changes
-      transform.position = lerpedPosition;
-      transform.localScale = lerpedScale;
-
-      // Animation stuff - await next frame kind of
-      yield return null;
+    private void Start() {
+      startPos = transform.position;
+      startScale = transform.localScale;
     }
-  }
 
-  public void OnPointerEnter(PointerEventData eventData) {
-    // Select the card
-    eventData.selectedObject = gameObject;
-  }
+    private IEnumerator AnimateCards(bool startingAnimation) {
+      float elapsedTime = 0f;
+      
+      while (elapsedTime < moveTime) {
+        // Increment timer
+        elapsedTime += Time.deltaTime;
 
-  public void OnPointerExit(PointerEventData eventData) {
-    // Deselect the card
-    eventData.selectedObject = null;
-  }
+        // Assess move direction
+        Vector3 endPosition;
+        Vector3 endScale;
+        
+        if (startingAnimation) {
+          endPosition = startPos + new Vector3(0f, verticalMoveAmount, 0f);
+          endScale = startScale * scaleAmount;
+        } else {
+          endPosition = startPos;
+          endScale = startScale;
+        }
 
-  public void OnSelect(BaseEventData eventData) {
-    StartCoroutine(this.animateCards(true));
-  }
+        // Calculate the step
+        Vector3 lerpedPosition = Vector3.Lerp(transform.position, endPosition, (elapsedTime / moveTime));
+        Vector3 lerpedScale = Vector3.Lerp(transform.localScale, endScale, (elapsedTime / moveTime));
 
-  public void OnDeselect(BaseEventData eventData) {
-    StartCoroutine(this.animateCards(false));
-  }
+        // Apply the changes
+        transform.position = lerpedPosition;
+        transform.localScale = lerpedScale;
 
-  public void onClick() {
-    this.updateStats(this.statistics);
-  }
+        // Animation stuff - await next frame kind of
+        yield return null;
+      }
+    }
 
-  public void updateStats(CardStatistics cardStatisticsScriptableObjects) {
-    switch (cardStatisticsScriptableObjects.entityType) {
-      case EntityType.Player: {
-          switch (cardStatisticsScriptableObjects.playerStatistic) {
+    public void OnPointerEnter(PointerEventData eventData) {
+      // Select the card
+      eventData.selectedObject = gameObject;
+    }
+
+    public void OnPointerExit(PointerEventData eventData) {
+      // Deselect the card
+      eventData.selectedObject = null;
+    }
+
+    public void OnSelect(BaseEventData eventData) {
+      StartCoroutine(AnimateCards(true));
+    }
+
+    public void OnDeselect(BaseEventData eventData) {
+      StartCoroutine(AnimateCards(false));
+    }
+
+    public void OnClick() {
+      UpdateStatisticsRepo();
+    }
+
+    public void SetStats(CardStatistics stats) {
+      statistics = stats;
+      csd.SetDisplay(stats);
+    }
+
+    private void UpdateStatisticsRepo() {
+      float value = statistics.value;
+      bool isMultiplicative = statistics.entityType == EntityType.Enemy
+        ? GenerateDescription.IsMultiplicative(statistics.enemyStatistic)
+        : GenerateDescription.IsMultiplicative(statistics.playerStatistic);
+
+      if (isMultiplicative) {
+        value = 1 + value / 100f;
+      }
+      
+      switch (statistics.entityType) {
+        case EntityType.Player: {
+          switch (statistics.playerStatistic) {
             case PlayerStatistics.Health: {
-                StatisticsRepo.I.playerHealthMaxMul *= cardStatisticsScriptableObjects.value;
-                break;
-              }
+              StatisticsRepo.I.PlayerHealthMaxMul *= value;
+              break;
+            }
             case PlayerStatistics.Armor: {
-                StatisticsRepo.I.playerArmorAdd += cardStatisticsScriptableObjects.value;
-                break;
-              }
+              StatisticsRepo.I.PlayerArmorAdd += value;
+              StatisticsRepo.I.PlayerArmorAdd = Mathf.Max(StatisticsRepo.I.PlayerArmorAdd, 0);
+              break;
+            }
             case PlayerStatistics.Damage: {
-                StatisticsRepo.I.playerDamageAdd += cardStatisticsScriptableObjects.value;
-                break;
-              }
+              StatisticsRepo.I.PlayerDamageAdd += value;
+              StatisticsRepo.I.PlayerDamageAdd = Mathf.Max(StatisticsRepo.I.PlayerDamageAdd, 0);
+              break;
+            }
             case PlayerStatistics.Speed: {
-                StatisticsRepo.I.playerSpeedMul *= cardStatisticsScriptableObjects.value;
-                break;
-              }
+              StatisticsRepo.I.PlayerSpeedMul *= value;
+              break;
+            }
             case PlayerStatistics.ReloadSpeed: {
-                StatisticsRepo.I.playerSpeedMul *= cardStatisticsScriptableObjects.value;
-                break;
-              }
+              StatisticsRepo.I.PlayerReloadSpeedMul *= value;
+              break;
+            }
             case PlayerStatistics.ShotRange: {
-                StatisticsRepo.I.playerShotRangeMul *= cardStatisticsScriptableObjects.value;
-                break;
-              }
+              StatisticsRepo.I.PlayerShotRangeMul *= value;
+              break;
+            }
             case PlayerStatistics.SightRange: {
-                StatisticsRepo.I.playerSightRangeMul *= cardStatisticsScriptableObjects.value;
-                break;
-              }
+              StatisticsRepo.I.PlayerSightRangeMul *= value;
+              break;
+            }
             case PlayerStatistics.Luck: {
-                StatisticsRepo.I.playerLuckMul *= cardStatisticsScriptableObjects.value;
-                break;
-              }
+              StatisticsRepo.I.PlayerLuckMul *= value;
+              break;
+            }
             case PlayerStatistics.CobaltPickRate: {
-                StatisticsRepo.I.playerCobaltPickRateMul *= cardStatisticsScriptableObjects.value;
-                break;
-              }
+              StatisticsRepo.I.PlayerCobaltPickRateMul *= value;
+              break;
+            }
             default: {
-                Debug.LogWarning("Unknown Player property type");
-                break;
-              }
+              Debug.LogWarning("Unknown Player property type");
+              break;
+            }
           }
+
           break;
         }
-      case EntityType.Enemy: {
-          switch (cardStatisticsScriptableObjects.enemyStatistic) {
+        case EntityType.Enemy: {
+          switch (statistics.enemyStatistic) {
             case EnemyStatistics.Health: {
-                StatisticsRepo.I.enemyHealthMaxMul *= cardStatisticsScriptableObjects.value;
-                break;
-              }
+              StatisticsRepo.I.EnemyHealthMaxMul *= value;
+              break;
+            }
             case EnemyStatistics.Armor: {
-                StatisticsRepo.I.enemyArmorAdd += cardStatisticsScriptableObjects.value;
-                break;
-              }
+              StatisticsRepo.I.EnemyArmorAdd += value;
+              StatisticsRepo.I.EnemyArmorAdd = Mathf.Max(StatisticsRepo.I.EnemyArmorAdd, 0);
+              break;
+            }
             case EnemyStatistics.Damage: {
-                StatisticsRepo.I.enemyDamageAdd += cardStatisticsScriptableObjects.value;
-                break;
-              }
+              StatisticsRepo.I.EnemyDamageAdd += value;
+              StatisticsRepo.I.EnemyDamageAdd = Mathf.Max(StatisticsRepo.I.EnemyDamageAdd, 0);
+              break;
+            }
             case EnemyStatistics.Speed: {
-                StatisticsRepo.I.enemySpeedMul *= cardStatisticsScriptableObjects.value;
-                break;
-              }
+              StatisticsRepo.I.EnemySpeedMul *= value;
+              break;
+            }
             case EnemyStatistics.ShotRange: {
-                StatisticsRepo.I.playerShotRangeMul *= cardStatisticsScriptableObjects.value;
-                break;
-              }
+              StatisticsRepo.I.EnemyAttackRangeMul *= value;
+              break;
+            }
             case EnemyStatistics.DropRate: {
-                StatisticsRepo.I.enemyDropRateMul *= cardStatisticsScriptableObjects.value;
-                break;
-              }
+              StatisticsRepo.I.EnemyDropRateMul *= value;
+              break;
+            }
             default: {
-                Debug.LogWarning("Unknown enemy property type");
-                break;
-              }
+              Debug.LogWarning("Unknown enemy property type");
+              break;
+            }
           }
+
           break;
         }
-      default: {
+        default: {
           Debug.LogWarning("Unknown entity type");
           break;
         }
+      }
     }
   }
 }
-

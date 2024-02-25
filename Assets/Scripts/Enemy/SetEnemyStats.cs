@@ -1,20 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using DamageSystem;
+﻿using DamageSystem;
+using Statistics;
 using UnityEngine;
 
-public class SetEnemyStats : MonoBehaviour
-{
-  [SerializeField] private Receiver receiver;
-  [SerializeField] private Enemy enemy;
-  [SerializeField] private CollisionDamageDealer collisionDamageDealer;
+namespace Enemy {
+  [DefaultExecutionOrder(-999)]
+  public class SetEnemyStats : MonoBehaviour {
+    [SerializeField] private Receiver receiver;
+    [SerializeField] private Kobold kobold;
+    [SerializeField] private CollisionDamageDealer collisionDamageDealer;
 
-  void Start()
-    {
-    receiver.baseMaxHp = receiver.baseMaxHp * StatisticsRepo.I.enemyHealthMaxMul;
-    receiver.baseArmor = receiver.baseArmor + StatisticsRepo.I.enemyArmorAdd;
-    enemy.minJumpDistance = enemy.minJumpDistance * StatisticsRepo.I.enemyAttackRangeMul;
-    enemy.movementSpeed = enemy.movementSpeed * StatisticsRepo.I.enemySpeedMul;
-    collisionDamageDealer.damage = collisionDamageDealer.damage + StatisticsRepo.I.enemyDamageAdd;
+    private void Start() {
+      receiver.baseMaxHp *= StatisticsRepo.I.EnemyHealthMaxMul;
+      receiver.baseArmor += StatisticsRepo.I.EnemyArmorAdd;
+      kobold.minJumpDistance *= StatisticsRepo.I.EnemyAttackRangeMul;
+      kobold.movementSpeed *= StatisticsRepo.I.EnemySpeedMul;
+      collisionDamageDealer.damage += StatisticsRepo.I.EnemyDamageAdd;
+    }
   }
 }
