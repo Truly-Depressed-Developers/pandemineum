@@ -86,7 +86,7 @@ namespace Player {
       for (int i = 0; i < pellets; i++) {
         float randomAngle = Random.Range(-spread, spread);
         var randomDir = (Quaternion.AngleAxis(randomAngle, transform.forward) * shotgunDir).normalized;
-        var pelletPoint = tip.position + randomDir * range;
+        var pelletPoint = tip.position + randomDir * range * Mathf.Sign(transform.parent.transform.localScale.x);
 
         Vector3[] arr = { tip.position, pelletPoint };
         var lri = Instantiate(lineRendererInstance);
@@ -94,7 +94,7 @@ namespace Player {
         Raycast(tip.position, randomDir, out float newRange);
 
         if (newRange < range) {
-          arr[1] = tip.position + randomDir * newRange;
+          arr[1] = tip.position + randomDir * newRange * Mathf.Sign(transform.parent.transform.localScale.x);
         }
 
         SetLrProperties(lri, arr);
@@ -135,7 +135,7 @@ namespace Player {
       if (!lrf || !lr) return;
 
       lrf.points = points;
-      lrf.fadeOutTime = 0.5f;
+      lrf.fadeOutTime = 0.3f;
 
       lr.startWidth = 0.05f;
       lr.endWidth = 0.05f;

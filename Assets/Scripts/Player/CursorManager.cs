@@ -34,7 +34,7 @@ public class CursorManager : MonoBehaviour {
     targetPosition = mousePos;
   }
 
-  private void FixedUpdate() {
+  private void Update() {
     UpdateTargetPosition();
 
     transform.position = Vector3.Lerp(transform.position, targetPosition, smoothSpeed * Time.deltaTime);

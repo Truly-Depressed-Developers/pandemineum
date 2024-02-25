@@ -18,7 +18,7 @@ TagManager:
   - EnemyAttack
   - Pickups
   - Obstacle
-  - NoEntityCollision
+  - NoEntityCollide
   - 
   - 
   - 
