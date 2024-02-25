@@ -1,5 +1,6 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using Statistics;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -22,7 +23,7 @@ namespace Utils {
 
       initialLightIntensity = light.intensity;
       initialLightInner = light.pointLightInnerRadius;
-      initialLightOuter = light.pointLightOuterRadius;
+      initialLightOuter = light.pointLightOuterRadius * StatisticsRepo.I.PlayerSightRangeMul;
     }
 
     private void Update() {
