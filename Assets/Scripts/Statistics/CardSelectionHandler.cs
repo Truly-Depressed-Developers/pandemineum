@@ -12,6 +12,7 @@ namespace Statistics {
     
     private CardStatistics statistics;
 
+    private bool canBeClicked = true;
     private Vector3 startPos;
     private Vector3 startScale;
 
@@ -20,7 +21,7 @@ namespace Statistics {
       startScale = transform.localScale;
     }
 
-    private IEnumerator AnimateCards(bool startingAnimation) {
+    private IEnumerator AnimateCards(bool startingAnimation, Vector3 target) {
       float elapsedTime = 0f;
       
       while (elapsedTime < moveTime) {
@@ -36,7 +37,7 @@ namespace Statistics {
           endScale = startScale * scaleAmount;
         } else {
           endPosition = startPos;
-          endScale = startScale;
+          endScale = target;
         }
 
         // Calculate the step
@@ -54,7 +55,9 @@ namespace Statistics {
 
     public void OnPointerEnter(PointerEventData eventData) {
       // Select the card
-      eventData.selectedObject = gameObject;
+      if (this.canBeClicked) {
+        eventData.selectedObject = gameObject;
+      }
     }
 
     public void OnPointerExit(PointerEventData eventData) {
@@ -63,15 +66,24 @@ namespace Statistics {
     }
 
     public void OnSelect(BaseEventData eventData) {
-      StartCoroutine(AnimateCards(true));
+      if (this.canBeClicked) {
+        StartCoroutine(AnimateCards(true, this.startScale));
+      }
     }
 
     public void OnDeselect(BaseEventData eventData) {
-      StartCoroutine(AnimateCards(false));
+      if (this.canBeClicked) {
+        StartCoroutine(AnimateCards(false, this.startScale));
+      } else {
+        StartCoroutine(AnimateCards(false, new Vector3(0,0,0)));
+      }
     }
 
     public void OnClick() {
-      UpdateStatisticsRepo();
+      if (this.canBeClicked && this.gameObject != null) {
+        this.canBeClicked = false;
+        UpdateStatisticsRepo();
+      }
     }
 
     public void SetStats(CardStatistics stats) {
@@ -171,7 +183,6 @@ namespace Statistics {
               break;
             }
           }
-
           break;
         }
         default: {
