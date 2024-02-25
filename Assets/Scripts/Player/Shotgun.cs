@@ -20,6 +20,7 @@ namespace Player {
     [SerializeField] public float reloadTime;
 
     [SerializeField] private LayerMask hitColliderLayers;
+    [SerializeField] private AudioClip shotgun_sound;
 
     private CursorManager cursorManager;
     private PlayerCameraEffects playerCamEff;
@@ -114,6 +115,7 @@ namespace Player {
       }
 
       lastShot = Time.time;
+      AudioSource.PlayClipAtPoint(shotgun_sound, transform.position, 1.5f);
     }
 
     private IEnumerator DoReload() {
