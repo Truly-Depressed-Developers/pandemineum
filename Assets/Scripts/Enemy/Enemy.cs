@@ -11,9 +11,6 @@ public class Enemy : MonoBehaviour {
   [SerializeField] private float jumpFreezeTime = 1f;
   [SerializeField] public float minJumpDistance = 2f;
 
-  [SerializeField] private float movementDirectionOuterAngle = 30f;
-  [SerializeField] private float movementDirectionInnerAngle = 30f;
-
   [SerializeField] private float cobaltDropChance;
   [SerializeField] private float cobaltDropAmount;
   [SerializeField] private GameObject chunkPrefab;
@@ -90,7 +87,7 @@ public class Enemy : MonoBehaviour {
     if (Random.value > cobaltDropChance) return;
 
     var chunkGO = Instantiate(chunkPrefab, transform.position, Quaternion.identity);
-    if(!chunkGO.TryGetComponent(out Chunk chunk));
+    if(!chunkGO.TryGetComponent(out Chunk chunk)) return;
     
     chunk.SetRichness(Mathf.FloorToInt(Random.Range(cobaltDropAmount * 0.8f, cobaltDropAmount * 1.2f)));
   }

@@ -6,7 +6,7 @@ using UnityEngine.Rendering.Universal;
 namespace Utils {
   [RequireComponent(typeof(Light2D))]
   public class RealisticLight : MonoBehaviour {
-    private Light2D light;
+    private new Light2D light;
     private float randomOffset;
     private float initialLightIntensity;
     private float initialLightInner;
