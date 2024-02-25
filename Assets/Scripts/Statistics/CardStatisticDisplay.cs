@@ -1,11 +1,10 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System;
 
-public class card5 : MonoBehaviour
+public class CardStatisticDisplay : MonoBehaviour
 {
     // Linkers to properties
     public TMP_Text entityType;

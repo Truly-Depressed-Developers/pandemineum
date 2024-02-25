@@ -27,7 +27,7 @@ public class CardPrefabGenerator : MonoBehaviour {
         displayScript.statistics = cardStatisticsScriptableObjects;
 
         // Fetch the script with text fields to set their values
-        card5 card5 = displayStatistics.GetComponent<card5>();
+        CardStatisticDisplay card5 = displayStatistics.GetComponent<CardStatisticDisplay>();
 
         // Fill out text fields' values
         string sign = cardStatisticsScriptableObjects.value > 0 ? "+" : "";
