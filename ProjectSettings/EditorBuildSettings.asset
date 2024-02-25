@@ -21,7 +21,16 @@ EditorBuildSettings:
     path: Assets/Scenes/Prod/Support.unity
     guid: 8eee111521e17a2408e8eaf5d115baf6
   - enabled: 1
+    path: Assets/Scenes/Prod/Intro.unity
+    guid: da07951e8369f304baa76be9b2e710e7
+  - enabled: 1
+    path: Assets/Scenes/Prod/Intro2.unity
+    guid: ca7f375603206f941800573e909a6f63
+  - enabled: 1
+    path: Assets/Scenes/Prod/TheMineFake.unity
+    guid: 62cc8eb7a71bfc54c91a00e244a4b410
+  - enabled: 1
     path: Assets/Scenes/Prod/TheMine.unity
-    guid: 9a7eba67bb2c19e42bf74b00ce6f10d6
+    guid: 3e7dce192cdc2e848a0833e77914d662
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 0f99b8fd0a291ae48a5fd6d25a7e82e6, type: 2}

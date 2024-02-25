@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace FlowManagement {
-  public class BuyPlayerManager : MonoBehaviour, IUnloadable {
+  public class BuyPlayerManager : MonoBehaviour {
     [SerializeField] private CardGenerator cg;
 
     private void Start() {
@@ -20,13 +20,9 @@ namespace FlowManagement {
       cg.Hide();
     }
 
-    public void OnUnload() {
-      cg.OnCardBought.RemoveListener(OnCardBought);
-    }
-
     public void NextDay() {
-      SceneManager.LoadSceneAsync("TheMine", LoadSceneMode.Additive);
-      SceneManager.UnloadSceneAsync("BuyPlayer");
+      cg.OnCardBought.RemoveListener(OnCardBought);
+      Flow.I.StartCoroutine(Flow.I.LoadTheMine());
     }
   }
 }

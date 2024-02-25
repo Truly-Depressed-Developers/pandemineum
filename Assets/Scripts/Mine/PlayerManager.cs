@@ -1,11 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using FlowManagement;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class PlayerManager : MonoBehaviour
-{
+public class PlayerManager : MonoBehaviour {
   public void onPlayerDeath() {
-    SceneManager.LoadScene("Lose");
+    Flow.I.StartCoroutine(Flow.I.LoadLose());
+  }
+
+  public void OnPlayerDeathFake() {
+    Flow.I.StartCoroutine(Flow.I.LoadIntro2());
   }
 }

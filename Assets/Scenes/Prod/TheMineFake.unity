@@ -342,12 +342,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 787973057814193359, guid: 663f0aecdd8166d459b73f1b36617841, type: 3}
+      propertyPath: cobaltRequirement
+      value: 2137
+      objectReference: {fileID: 0}
+    - target: {fileID: 787973057814193359, guid: 663f0aecdd8166d459b73f1b36617841, type: 3}
       propertyPath: onThresholdCrossed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1914830896}
     - target: {fileID: 3420866590938314013, guid: 663f0aecdd8166d459b73f1b36617841, type: 3}
       propertyPath: m_Name
       value: MineManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6128693312975559146, guid: 663f0aecdd8166d459b73f1b36617841, type: 3}
+      propertyPath: allowedTime
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6128693312975559146, guid: 663f0aecdd8166d459b73f1b36617841, type: 3}
       propertyPath: timeout_effect
@@ -402,7 +410,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 663f0aecdd8166d459b73f1b36617841, type: 3}
---- !u!114 &637637913 stripped
+--- !u!114 &764908670 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7495145403299427275, guid: 663f0aecdd8166d459b73f1b36617841, type: 3}
   m_PrefabInstance: {fileID: 637637912}
@@ -595,32 +603,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 737642453858378910, guid: b6e642e196231b845a53ab757f0e53ce, type: 3}
-      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 737642453858378910, guid: b6e642e196231b845a53ab757f0e53ce, type: 3}
-      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 737642453858378910, guid: b6e642e196231b845a53ab757f0e53ce, type: 3}
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 637637913}
-    - target: {fileID: 737642453858378910, guid: b6e642e196231b845a53ab757f0e53ce, type: 3}
-      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 764908670}
     - target: {fileID: 737642453858378910, guid: b6e642e196231b845a53ab757f0e53ce, type: 3}
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: onPlayerDeath
-      objectReference: {fileID: 0}
-    - target: {fileID: 737642453858378910, guid: b6e642e196231b845a53ab757f0e53ce, type: 3}
-      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PlayerManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 737642453858378910, guid: b6e642e196231b845a53ab757f0e53ce, type: 3}
-      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: OnPlayerDeathFake
       objectReference: {fileID: 0}
     - target: {fileID: 2270992693525138366, guid: b6e642e196231b845a53ab757f0e53ce, type: 3}
       propertyPath: m_LocalPosition.x

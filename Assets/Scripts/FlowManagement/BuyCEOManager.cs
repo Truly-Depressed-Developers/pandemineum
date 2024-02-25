@@ -1,3 +1,4 @@
+using System.Collections;
 using Statistics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,8 +12,7 @@ namespace FlowManagement {
     }
     
     public void Next() {
-      SceneManager.LoadSceneAsync("BuyPlayer", LoadSceneMode.Additive);
-      SceneManager.UnloadSceneAsync("BuyCEO");
+      Flow.I.StartCoroutine(Flow.I.LoadBuyPlayer());
     }
   }
 }
