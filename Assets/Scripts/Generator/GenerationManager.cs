@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Generator {
   public class GenerationManager : MonoBehaviour {
@@ -13,7 +14,11 @@ namespace Generator {
     public MapGenerator map_generator;
     public CaveContentGenerator cave_content;
     public CaveEnemySpawner cave_enemies;
+    public CaveStructureGenerator cave_structures;
     public GeneratorTools gen_tools;
+
+    [Space(10)]
+    public UnityEvent when_done_generating;
 
     private void Start() {
       BeginGeneration();
@@ -39,6 +44,13 @@ namespace Generator {
       while (!map_generator.done_generating)
         yield return null;
 
+      // filling it with structures...
+      cave_structures.BeginGeneration();
+      while (!cave_structures.done_generating)
+        yield return null;
+
+      yield return null;
+
       // filling it with content...
       cave_content.calculate_kobalt_richness(100, 2128);
       cave_content.BeginGeneration();
@@ -51,6 +63,7 @@ namespace Generator {
         yield return null;
 
       done_generating = true;
+      when_done_generating.Invoke();
       yield break;
     }
   }

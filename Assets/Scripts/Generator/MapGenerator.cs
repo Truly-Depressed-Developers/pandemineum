@@ -11,6 +11,8 @@ namespace Generator {
     private Coroutine current_gen;
     public System.Random gen;
 
+    [HideInInspector] public List<Vector2> cavern_position = new List<Vector2>(0);
+
     public void BeginGeneration() {
       done_generating = false;
       current_gen = StartCoroutine(generate_layout());
@@ -50,6 +52,7 @@ namespace Generator {
         id = gen.Next(0, joint_amount);
         gen_tools.GenerateSphere(gen.Next(cave_profile.MinCavernSize, cave_profile.MaxCavernSize)
           , new Vector2Int(joints[id].x, joints[id].y));
+        cavern_position.Add(new Vector2(joints[id].x, joints[id].y));
         joints.RemoveAt(id);
         caverns--;
         joint_amount--;
@@ -70,6 +73,8 @@ namespace Generator {
       // generating layout
       while (true) { 
         gen_tools.clear_map();
+        cavern_position.Clear();
+        gen_tools.GenerateSphere(4, Vector2Int.zero);
         SimpleCaveGenerator();
         yield return null;
 

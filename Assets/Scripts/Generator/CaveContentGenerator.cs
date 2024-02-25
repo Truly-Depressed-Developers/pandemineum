@@ -58,7 +58,7 @@ namespace Generator {
             * Mathf.Pow(gen.Next(0, 100) / 100f,2) * vein_radious);
           err--;
         }
-        while (!gen_tools.collision_check(new_pos , spawned, collision_dist, last_id) && err != 0);
+        while (gen_tools.collision_check(new_pos , spawned, collision_dist, last_id) && err != 0);
         vein_amount--;
         if (err == 0)
           continue;

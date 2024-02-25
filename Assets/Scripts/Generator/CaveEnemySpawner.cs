@@ -52,14 +52,15 @@ namespace Generator {
       enemy_group_positions.Add(pos);
       Vector2[] spawned = new Vector2[amount]; int err;
       Vector2 new_pos = Vector2.zero; int last_id = 0;
-      while(amount != 0) {
+      while(amount > 0) {
         err = 100;
         do {
           new_pos = pos + new Vector2(
             gen.Next((int)(-spawn_box_size * 100f / 2f), (int)(spawn_box_size * 100f / 2f)),
             gen.Next((int)(-spawn_box_size * 100f / 2f), (int)(spawn_box_size * 100f / 2f)))/100f;
+          err--;
         }
-        while (!gen_tools.collision_check(new_pos, spawned, enemy_distance, last_id) || err == 0);
+        while (gen_tools.collision_check(new_pos, spawned, enemy_distance, last_id) && err != 0);
         amount--;
         if (err == 0)
           continue;
