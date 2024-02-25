@@ -24,7 +24,7 @@ namespace Statistics {
     private IEnumerator AnimateCards(bool startingAnimation, Vector3 target) {
       float elapsedTime = 0f;
       
-      while (elapsedTime < moveTime) {
+      while (elapsedTime < moveTime * 2) {
         // Increment timer
         elapsedTime += Time.deltaTime;
 
@@ -41,8 +41,8 @@ namespace Statistics {
         }
 
         // Calculate the step
-        Vector3 lerpedPosition = Vector3.Lerp(transform.position, endPosition, (elapsedTime / moveTime));
-        Vector3 lerpedScale = Vector3.Lerp(transform.localScale, endScale, (elapsedTime / moveTime));
+        Vector3 lerpedPosition = Vector3.Lerp(transform.position, endPosition, (elapsedTime / moveTime / 15));
+        Vector3 lerpedScale = Vector3.Lerp(transform.localScale, endScale, (elapsedTime / moveTime / 15));
 
         // Apply the changes
         transform.position = lerpedPosition;
