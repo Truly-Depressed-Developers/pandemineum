@@ -30,6 +30,7 @@ namespace Player {
     private float lastShot;
     private float lastReload;
     private int ammo;
+    private bool inReload = false;
 
     public float ReloadProgress {
       get {
@@ -121,8 +122,11 @@ namespace Player {
     }
 
     private IEnumerator DoReload() {
+      if(inReload) yield break;
+      inReload = true;
       if (cursorManager) cursorManager.startBarAnimation(reloadTime);
       yield return new WaitForSeconds(reloadTime);
+      inReload = false;
       ammo = clipSize;
       if (cursorManager) cursorManager.onReload();
     }
@@ -146,7 +150,7 @@ namespace Player {
 
       Gradient gradient = new();
       gradient.SetKeys(
-        new GradientColorKey[] { new(Color.white, 0.0f), new(Color.grey, 1.0f) },
+        new GradientColorKey[] { new(Color.yellow, 0.0f), new(new Color(1.0f, 0.5f, 0.0f), 1.0f) },
         new GradientAlphaKey[] { new(1.0f, 0f), new(0.3f, 1.0f) }
       );
       lr.colorGradient = gradient;
@@ -173,6 +177,8 @@ namespace Player {
     }
 
     public void OnIndicateReload(InputAction.CallbackContext ctx) {
+      if(inReload) return;
+
       ammo = 0;
       cursorManager.onShoot(ammo);
       lastReload = Time.time;
