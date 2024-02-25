@@ -1,5 +1,5 @@
-public enum PlayerStatistics
-{
+﻿namespace Statistics {
+  public enum PlayerStatistics {
     Health,
     Armor,
     Damage,
@@ -7,5 +7,7 @@ public enum PlayerStatistics
     ReloadSpeed,
     ShotRange,
     SightRange,
-    Luck
+    Luck,
+    CobaltPickRate
+  }
 }

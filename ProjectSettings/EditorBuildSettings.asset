@@ -6,6 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 24cfa2bbaf56bf34386d2040597acce5
+  - enabled: 1
+    path: Assets/Scenes/GameplayLoop_Better.unity
+    guid: acd694b4a430834438a5a50bd0f41170
+  - enabled: 1
+    path: Assets/Scenes/Cards/Cards.unity
+    guid: 802b08511624b89458ad6f9d3b4406e9
+  - enabled: 1
+    path: Assets/Scenes/Lose.unity
+    guid: 8c1aa623310a36949ae3bc82cd33d36d
+  - enabled: 0
     path: Assets/Scenes/Terrain Generation.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects:

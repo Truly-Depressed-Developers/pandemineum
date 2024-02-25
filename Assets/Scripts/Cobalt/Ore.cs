@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
@@ -8,6 +8,8 @@ using Random = UnityEngine.Random;
 namespace Cobalt {
   public class Ore : MonoBehaviour {
     [SerializeField] private GameObject chunkPrefab;
+    [SerializeField] private GameObject breakParticle;
+    [SerializeField] private AudioClip break_audio;
     public int Richness { get; private set; } = 50;
 
     public void SetRichness(int richness) {
@@ -32,6 +34,9 @@ namespace Cobalt {
         c.transform.position += GenerateRandomOffset();
       }
 
+      GameObject p = Instantiate(breakParticle);
+      p.transform.position = transform.position;
+      AudioSource.PlayClipAtPoint(break_audio, transform.position - Vector3.forward * 9f , 1f);
       Destroy(gameObject);
     }
 
