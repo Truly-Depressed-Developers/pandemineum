@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -76,6 +76,14 @@ namespace FlowManagement {
 
       var lose = SceneManager.LoadSceneAsync("Lose", LoadSceneMode.Additive);
       while (!lose.isDone) yield return null;
+    }
+
+    public IEnumerator LoadMenu() {
+      var loseScene = SceneManager.UnloadSceneAsync("Lose");
+      while (!loseScene.isDone) yield return null;
+
+      var menu = SceneManager.LoadSceneAsync("MainMenu");
+      while (!menu.isDone) yield return null;
     }
   }
 }
