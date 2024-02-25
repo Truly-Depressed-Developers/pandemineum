@@ -445,8 +445,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 1.49}
-  m_SizeDelta: {x: 7, y: 1.7018}
+  m_AnchoredPosition: {x: 0, y: 1.51}
+  m_SizeDelta: {x: 7.7157, y: 1.7018}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1045720428500180417
 Canvas:
@@ -1032,8 +1032,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.38}
-  m_SizeDelta: {x: 0, y: -0.5727}
+  m_AnchoredPosition: {x: 0, y: 0.30455}
+  m_SizeDelta: {x: -2.0862, y: -0.5727}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5058249225264488013
 CanvasRenderer:
@@ -1063,7 +1063,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Aby opu\u015Bci\u0107 kopalni\u0119 naci\u015Bnij klawisz \"x\""
+  m_text: To leave the mine press the "x" key
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1226,8 +1226,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000000059604645}
-  m_SizeDelta: {x: 0, y: -1.1818}
+  m_AnchoredPosition: {x: 0.053299904, y: 0.000000059604645}
+  m_SizeDelta: {x: 0.533, y: -1.1818}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4615845856742618124
 CanvasRenderer:
@@ -1257,7 +1257,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Zebra\u0142e\u015B za ma\u0142o kobaltu"
+  m_text: You collected too little cobalt
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
