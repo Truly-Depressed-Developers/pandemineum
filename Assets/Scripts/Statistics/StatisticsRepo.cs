@@ -3,24 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using Utils;
 
-public class StatisticsRepo : MonoSingleton<StatisticsRepo> {
+namespace Statistics {
+  public class StatisticsRepo : MonoSingleton<StatisticsRepo> {
+    public float PlayerHealthMaxMul { get; set; } = 1;
+    public float PlayerArmorAdd { get; set; } = 0;
+    public float PlayerDamageAdd { get; set; } = 0;
+    public float PlayerSpeedMul { get; set; } = 1;
+    public float PlayerReloadSpeedMul { get; set; } = 1;
+    public float PlayerShotRangeMul { get; set; } = 1;
+    public float PlayerSightRangeMul { get; set; } = 1;
+    public float PlayerLuckMul { get; set; } = 1;
+    public float PlayerCobaltPickRateMul { get; set; } = 1;
 
-
-  public int playerHealthMaxMul { get; set; } = 1;
-  public int playerArmorAdd { get; set; } = 0;
-  public int playerDamageAdd { get; set; } = 0;
-  public float playerSpeedMul { get; set; } = 1; // moved
-  public int playerReloadSpeedMul { get; set; } = 1;
-  public int playerShotRangeMul { get; set; } = 1;
-  public int playerSightRangeMul { get; set; } = 1; //nie mamy
-  public int playerLuckMul { get; set; } = 1; //nie mamy
-  public int playerCobaltPickRateMul { get; set; } = 1;
-
-  //Enemies 
-  public int enemyHealthMaxMul { get; set; } = 1;
-  public int enemyArmorAdd { get; set; } = 0;
-  public int enemyDamageAdd { get; set; } = 0;
-  public int enemySpeedMul { get; set; } = 1;
-  public int enemyDropRateMul { get; set; } = 1; //nie mamy
-  public int enemyAttackRangeMul { get; set; } = 1;
+    //Enemies 
+    public float EnemyHealthMaxMul { get; set; } = 1;
+    public float EnemyArmorAdd { get; set; } = 0;
+    public float EnemyDamageAdd { get; set; } = 0;
+    public float EnemySpeedMul { get; set; } = 1;
+    public float EnemyDropRateMul { get; set; } = 1;
+    public float EnemyAttackRangeMul { get; set; } = 1;
+  }
 }

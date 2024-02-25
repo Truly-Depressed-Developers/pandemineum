@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using Statistics;
 using UnityEngine.Events;
 using Utils;
 
@@ -10,7 +8,7 @@ namespace Player {
     public UnityEvent<int> cobaltCountChanged;
     
     public void OnCobaltCollected(int collected) {
-      CobaltCount += collected* StatisticsRepo.I.playerCobaltPickRateMul;
+      CobaltCount += (int) (collected * StatisticsRepo.I.PlayerCobaltPickRateMul);
       
       cobaltCountChanged.Invoke(CobaltCount);
     }
