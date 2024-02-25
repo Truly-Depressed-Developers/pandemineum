@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using Cobalt;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour {
   private Transform player; 
@@ -15,7 +16,12 @@ public class Enemy : MonoBehaviour {
   [SerializeField] private float cobaltDropAmount;
   [SerializeField] private GameObject chunkPrefab;
 
+  [Space(10)]
+  [SerializeField] private UnityEvent on_jump_attack;
+  [SerializeField] private UnityEvent on_agro;
+
   private bool canJump = true;
+  private bool detected = false;
 
   private Rigidbody2D rb;
 
@@ -53,6 +59,10 @@ public class Enemy : MonoBehaviour {
 
       isRunning = true;
       Move(player);
+      if (!detected) {
+        on_agro.Invoke();
+        detected = true;
+      }
 
       if (distanceToPlayer <= minJumpDistance && canJump) {
 
@@ -60,6 +70,9 @@ public class Enemy : MonoBehaviour {
 
         StartCoroutine(JumpCooldown());
       }
+    } 
+    else {
+      detected = false;
     }
   }
 
@@ -72,6 +85,7 @@ public class Enemy : MonoBehaviour {
   private void Jump() {
     Vector3 jumpDirection = (player.position - transform.position).normalized;
     rb.AddForce(jumpDirection * jumpForce);
+    on_jump_attack.Invoke();
   }
 
   private IEnumerator JumpCooldown() {

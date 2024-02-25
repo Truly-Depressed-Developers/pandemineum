@@ -36,7 +36,7 @@ namespace Cobalt {
 
       GameObject p = Instantiate(breakParticle);
       p.transform.position = transform.position;
-      AudioSource.PlayClipAtPoint(break_audio, transform.position);
+      AudioSource.PlayClipAtPoint(break_audio, transform.position - Vector3.forward * 9f , 1f);
       Destroy(gameObject);
     }
 
