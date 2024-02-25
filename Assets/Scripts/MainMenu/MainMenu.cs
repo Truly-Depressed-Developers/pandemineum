@@ -1,13 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
-{
-
-  public void Callback_NewGame() {
-    SceneManager.LoadScene(1);
+public class MainMenu : MonoBehaviour {
+  private void Awake() {
+    SceneManager.LoadSceneAsync("Support", LoadSceneMode.Additive);
   }
-
+  
+  public void Callback_NewGame() {
+    // SceneManager.LoadSceneAsync("");
+  }
 }
