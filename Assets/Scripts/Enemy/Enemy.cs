@@ -19,12 +19,27 @@ public class Enemy : MonoBehaviour {
   [SerializeField] private GameObject chunkPrefab;
 
   private bool canJump = true;
-  private bool inJump;
 
   private Rigidbody2D rb;
 
+  public bool isRunning {
+    get; private set;
+  }
+  public bool isJumping {
+    get; private set;
+  }
+
+  public Vector2 MovementDirection {
+    get {
+      if(!player) return Vector2.zero;
+      else return (player.position - transform.position).normalized;
+    }
+  }
+
   private void Start() {
     rb = GetComponent<Rigidbody2D>();
+
+    isJumping = false;
 
     if (player == null) {
       player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -32,15 +47,15 @@ public class Enemy : MonoBehaviour {
   }
 
   private void FixedUpdate() {
+    isRunning = false;
+
     if (!player) return;
     float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-    if (distanceToPlayer <= detectionRange && !inJump) {
+    if (distanceToPlayer <= detectionRange && !isJumping) {
 
-      //LookAt(player);
-
+      isRunning = true;
       Move(player);
-
 
       if (distanceToPlayer <= minJumpDistance && canJump) {
 
@@ -49,19 +64,6 @@ public class Enemy : MonoBehaviour {
         StartCoroutine(JumpCooldown());
       }
     }
-  }
-
-  private void Update() {
-    
-  }
-
-  private void LookAt(Transform target) {
-    Vector3 direction = (target.position - transform.position).normalized;
-    direction.y = 0f;
-
-    Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, direction);
-    transform.rotation = targetRotation;
-
   }
 
   private void Move(Transform target) {
@@ -77,9 +79,9 @@ public class Enemy : MonoBehaviour {
 
   private IEnumerator JumpCooldown() {
     canJump = false;
-    inJump = true;
+    isJumping = true;
     yield return new WaitForSeconds(jumpFreezeTime);
-    inJump = false;
+    isJumping = false;
     yield return new WaitForSeconds(jumpCooldown);
     canJump = true;
   }

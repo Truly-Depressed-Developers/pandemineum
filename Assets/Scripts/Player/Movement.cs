@@ -37,7 +37,6 @@ public class Movement : MonoBehaviour {
     float similarity = Vector3.Dot(lookDirection.normalized, moveDir.normalized);
     float movementPenalty = similarity > 0.2f ? 1 : (similarity - 0.2f) / 3f + 1f;
     
-    Debug.Log(movementPenalty);
     return movementPenalty;
   }
 }
